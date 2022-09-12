@@ -14,8 +14,9 @@ app.set('view engine', 'ejs');
 //root views directory to public
 app.set('views', 'public');
 
-//tells express public folder is statci folder
-app.use(express.static('public'));
+//declaring static directory
+app.use(express.static(__dirname + '/public'));
+
 
 
 connectDB()
