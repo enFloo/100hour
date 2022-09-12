@@ -12,7 +12,7 @@ dotenv.config({ path: './config/config.env'});
 
 
 //root views directory to public
-app.set('views', 'public/views/layouts');
+app.set('views', './public/views');
 
 //declaring static directory
 app.use(express.static('public'));
@@ -32,6 +32,9 @@ if(process.env.NODE_ENV === 'development'){
 //setting the view engine with express-handlebars
 app.engine('hbs', engine({extname: ".hbs", defaultLayout: "main", layoutsDir: "public/views/layouts",}));
 app.set('view engine', '.hbs');
+
+//Routes
+app.use('/', require('./routes/index'));
 
 
 
