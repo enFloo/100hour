@@ -2,21 +2,22 @@ const express = require('express');
 const app = express();
 const dotenv = require('dotenv');
 const morgan = require('morgan');
-const ejs = require('ejs');
+const {engine} = require('express-handlebars');
 const bodyParser = require('body-parser');
 const connectDB = require('./config/db')
 
 //Load config 
 dotenv.config({ path: './config/config.env'});
 
-//setting the view engine at EJS
-app.set('view engine', 'ejs');
+
 
 //root views directory to public
-app.set('views', 'public');
+app.set('views', 'public/views/layouts');
 
 //declaring static directory
 app.use(express.static('public'));
+
+
 
 
 //connect database
@@ -28,14 +29,20 @@ connectDB()
 if(process.env.NODE_ENV === 'development'){
   app.use(morgan('dev'))
 }
+//setting the view engine with express-handlebars
+app.engine('hbs', engine({extname: ".hbs", defaultLayout: "main", layoutsDir: "public/views/layouts",}));
+app.set('view engine', '.hbs');
 
+
+
+ 
 const PORT = process.env.PORT || 3000;
 
 
 
 //setting home route
 app.get('/', function(req, res) {
-  res.render('./pages/index');
+  res.render('./main');
 });
 
 app.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode on ${PORT}`)
