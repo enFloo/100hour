@@ -15,7 +15,7 @@ app.set('view engine', 'ejs');
 app.set('views', 'public');
 
 //declaring static directory
-app.use(express.static(__dirname + '/public'));
+app.use(express.static('public'));
 
 
 
