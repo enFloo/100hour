@@ -1,3 +1,17 @@
-h1 {
-    color: #FF5733;
+h3 {
+    font-size: 4em;
+}
+
+p{
+    margin: 1em 0em !important;
+}
+
+.login-container{
+    width:400px;
+    margin-top:50px;
+    text-align: center;
+}
+
+.divider{
+    margin: 1em 0em;
 }
