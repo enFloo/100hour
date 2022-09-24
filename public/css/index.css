@@ -15,3 +15,11 @@ p{
 .divider{
     margin: 1em 0em;
 }
+
+body {
+    background-color: #E2DCC8;
+}
+
+nav{
+    background-color: #100F0F;
+}
