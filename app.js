@@ -1,12 +1,15 @@
 const express = require('express');
 const app = express();
+const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const passport = require('passport');
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
 const morgan = require('morgan');
 const {engine} = require('express-handlebars');
 const bodyParser = require('body-parser');
 const connectDB = require('./config/db');
+
 // const router = require('./routes/auth')
 
 //Load config 
@@ -39,7 +42,8 @@ app.set('view engine', '.hbs');
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  store: MongoStore.create({mongoUrl: process.env.MONGO_URI}),
   
 }))
 

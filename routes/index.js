@@ -13,6 +13,7 @@ router.get('/', ensureGuest, (req, res) =>{
 //@desc     Dashboard
 //@route    Get /dashboard
 router.get('/dashboard', ensureAuth, (req, res) =>{
+    console.log(req.User)
     res.render('dashboard')
 })
 
