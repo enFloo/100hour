@@ -62,14 +62,24 @@ app.get('/', function(req, res) {
   res.render('./main');
 });
 
+//setting auth/google route
 app.get('/auth/google',
   passport.authenticate('google', { scope: ['profile'] }));
 
+
+//setting /auth/auth/google/callback route
 app.get('/auth/auth/google/callback', 
   passport.authenticate('google', { failureRedirect: '/' }),
   function(req, res) {
-    // Successful authentication, redirect home.
     res.redirect('/dashboard');
   });
+
+//setting /auth/logout route
+app.get('/auth/logout', function (req, res) {
+  req.logout()
+  res.redirect('/')
+});
+
+
 app.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode on ${PORT}`)
 );
