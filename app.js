@@ -75,9 +75,11 @@ app.get('/auth/auth/google/callback',
   });
 
 //setting /auth/logout route
-app.get('/auth/logout', function (req, res) {
-  req.logout()
-  res.redirect('/')
+app.get('/logout', function(req, res, next) {
+  req.logout(function(err) {
+    if (err) { return next(err); }
+    res.redirect('/');
+  });
 });
 
 
