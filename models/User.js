@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const UserSchema = new mongoose.Schema({
-    googleId:{
+    id:{
         type: String,
         required: true
     },
@@ -9,15 +9,15 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    firstName:{
+    givenName:{
         type: String,
         required: true
     },
-    lastName:{
+    familyName:{
         type: String,
         required: true
     },
-    image:{
+    photos:{
         type: String,
         required: true
     },

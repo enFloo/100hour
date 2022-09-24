@@ -6,7 +6,8 @@ const session = require('express-session');
 const morgan = require('morgan');
 const {engine} = require('express-handlebars');
 const bodyParser = require('body-parser');
-const connectDB = require('./config/db')
+const connectDB = require('./config/db');
+// const router = require('./routes/auth')
 
 //Load config 
 dotenv.config({ path: './config/config.env'});
@@ -21,6 +22,7 @@ app.set('views', './public/views');
 
 //declaring static directory
 app.use(express.static('public'));
+
 
 //connect database
 connectDB()
@@ -50,10 +52,6 @@ app.use(passport.session());
 
 //Routes
 app.use('/', require('./routes/index'));
-app.use('/auth/google', require('./routes/auth'));
-
-
-
  
 const PORT = process.env.PORT || 3000;
 
@@ -64,17 +62,14 @@ app.get('/', function(req, res) {
   res.render('./main');
 });
 
-//setting google auth route
-app.get('/auth/google', passport.authenticate('google', {
-  scope: ['profile', 'email']
-}));
+app.get('/auth/google',
+  passport.authenticate('google', { scope: ['profile'] }));
 
-//setting google auth callback route
-app.get('/auth/auth/google/callback', function (req,res) {
-  res.render('./dashboard')
-}, passport.authenticate('google', {
-  scope: ['profile', 'email']
-}));
-
+app.get('/auth/auth/google/callback', 
+  passport.authenticate('google', { failureRedirect: '/' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/dashboard');
+  });
 app.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode on ${PORT}`)
 );
