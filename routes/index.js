@@ -16,5 +16,11 @@ router.get('/dashboard', ensureAuth, (req, res) =>{
     res.render('dashboard')
 })
 
+//@desc     Public Pr's
+//@route    Get /publicpr
+router.get('/publicprs', ensureAuth, (req, res) =>{
+    res.render('publicprs')
+})
+
 module.exports = router
 
