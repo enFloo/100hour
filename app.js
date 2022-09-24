@@ -64,8 +64,15 @@ app.get('/', function(req, res) {
   res.render('./main');
 });
 
-//google auth route
+//setting google auth route
 app.get('/auth/google', passport.authenticate('google', {
+  scope: ['profile', 'email']
+}));
+
+//setting google auth callback route
+app.get('/auth/auth/google/callback', function (req,res) {
+  res.render('./dashboard')
+}, passport.authenticate('google', {
   scope: ['profile', 'email']
 }));
 
