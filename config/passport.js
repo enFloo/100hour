@@ -32,6 +32,7 @@ module.exports = function(passport){
 
             console.error(err)
         }
+        console.log(profile)
         
     }))
     
@@ -40,8 +41,8 @@ module.exports = function(passport){
         process.nextTick(function() {
           return cb(null, {
             id: user.id,
-            username: user.username,
-            picture: user.picture
+            username: user.displayName,
+            picture: user.photos
           });
         });
     });

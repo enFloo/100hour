@@ -35,7 +35,12 @@ if(process.env.NODE_ENV === 'development'){
   app.use(morgan('dev'))
 }
 //setting the view engine with express-handlebars
-app.engine('hbs', engine({extname: ".hbs", defaultLayout: "main", layoutsDir: "public/views/layouts",}));
+app.engine('hbs', engine({
+  extname: ".hbs", 
+  defaultLayout: "main", 
+  layoutsDir: "public/views/layouts",
+}));
+
 app.set('view engine', '.hbs');
 
 //Sessions
