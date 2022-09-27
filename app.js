@@ -61,6 +61,7 @@ app.use(passport.session());
 
 //Routes
 app.use('/', require('./routes/index'));
+app.use('/timers', require('./routes/timers'))
  
 const PORT = process.env.PORT || 3000;
 
@@ -69,6 +70,13 @@ const PORT = process.env.PORT || 3000;
 //setting home route
 app.get('/', function(req, res) {
   res.render('./main');
+});
+
+//setting timers route
+app.get('/timers', function(req, res) {
+  res.render('timers', {
+    layout: 'main'
+  });
 });
 
 //setting auth/google route
