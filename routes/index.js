@@ -3,6 +3,7 @@ const router = express.Router();
 const {ensureAuth, ensureGuest} = require('../middleware/auth');
 const User = require('../models/User');
 
+
 //@desc     Login/Landing page
 //@route    GET /
 router.get('/', ensureGuest, (req, res) =>{
