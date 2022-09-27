@@ -1,3 +1,15 @@
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.debug{
+    border: 5px solid red;
+}
+
+
+
 h3 {
     font-size: 4em;
 }
@@ -22,4 +34,47 @@ body {
 
 nav{
     background-color: #100F0F;
+}
+
+.defaultpic{
+    width:13em;
+    height: 12em;
+}
+
+.profilepic{
+    width:12em;
+    height: 11em;
+}
+
+.dashbody{ 
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+   
+    
+   
+   
+    background-color: #fff;
+    border: 5px solid red;
+    
+}
+
+.dashheader{ 
+   
+    border: 5px solid red;
+    
+}
+
+.dashMiddle{
+    height: 20em;
+    display: flex;
+    flex-direction: row;
+}
+
+.dashColumn{
+    flex: 1 1 auto;
 }

@@ -1,9 +1,37 @@
 
-<section>
+<section class="container dashbody">
+    <section class=" container dashheader">
+
+        <h4 class="left-align">Dashboard</h4>
+        <h5>Welcome {{user.username}}</h5>
+        {{#if user.picture}}
+            <img class="profilepic" src="{{user.picture}}"  alt="User profile image">
+        {{else}}
+            <img class="defaultpic" src="/assets/image/defaultpic.png" alt="User profile image">
+        {{/if}}
+
+    </section>
+
+    <section class="debug dashMiddle">
+
+        <section class="dashColumn debug">
+            <h6>Timers</h6>
+
+        </section>
+
+        <section class="dashColumn debug">
+            <h6>Notes</h6>
+
+        </section>
+
+        <section class="dashColumn debug">
+            <h6>Posts</h6>
+
+        </section>
+
+
+    </section>
     
-    <h3>Dashboard</h3>
-    <h5>Welcome {{user.username}}</h5>
-    <img src="{{user.picture}}" alt="User profile image">
     
 </section>
 
