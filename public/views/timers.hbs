@@ -1,32 +1,13 @@
 <section>
-    <h4>My Timers</h4>
-    <div class="card ">
+    <h4>Timer Dashboard</h4>
+   {{> _createTimerForm}}
+</section>
+
+<section>
+    <h5>My Timers</h5>
+    <div class="card">
         <div class="card-content">
-            <span class="card-title"> Create a Timer</span>
-                <form action="/timers" method="POST">
-                    <div class="form-group">
-                    <label for="timerName">Timer Name</label>
-                    <input type="text" class="form-control" id="timerName" placeholder="Enter Timer Name" name="timerName">
-                    </div>
-                    <div class="form-group">
-                    <label for="activeTime">Active Time</label>
-                    <input type="number" class="form-control" id="activeTime" placeholder="Enter Active Time" name="activeTime" max="240">
-                    </div>
-                    <div class="form-group">
-                    <label for="breakTime">Break Time</label>
-                    <input type="number" class="form-control" id="breakTime" placeholder="Enter Break Time" name="breakTime" max="240">
-                    </div>
-                    <div class="form-group">
-                    <label for="numberOfRounds">Number of Rounds</label>
-                    <input type="number" class="form-control" id="numberOfRounds" name="numberOfRounds" placeholder="Enter Number of Rounds" max="240">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-    
 
         </div>
-        
-    </div>
-    
-    
+   </div>
 </section>

@@ -54,18 +54,13 @@ nav{
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
-   
-    
-   
-   
     background-color: #fff;
-    border: 5px solid red;
+    
     
 }
 
 .dashheader{ 
    
-    border: 5px solid red;
     
 }
 
@@ -77,4 +72,5 @@ nav{
 
 .dashColumn{
     flex: 1 1 auto;
+    border: 5px solid #E2DCC8;
 }
