@@ -16,7 +16,12 @@ const connectDB = require('./config/db');
 dotenv.config({ path: './config/config.env'});
 
 //calling bodyParser
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
+
+app.use(bodyParser.json());
+
 
 //passport config
 require('./config/passport')(passport)
