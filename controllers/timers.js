@@ -17,5 +17,15 @@ module.exports = {
         } catch(err) {
             console.log(err);
         }
+    },
+
+    getTimer: async(req, res) =>{
+        let timer = Timer;
+
+        let timerResults = await timer.find({}).lean().exec((err, timerData) =>{
+            if(timerData){
+                res.render('timers', {data: timerData});
+            }
+        });
     }
 }
