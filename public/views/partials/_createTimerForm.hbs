@@ -5,24 +5,22 @@
             <form action="/timers" method="POST">
                 <div class="form-group">
                 <label for="timerName">Timer Name</label>
-                <input type="text" class="form-control" id="timerName" placeholder="Enter Timer Name" name="timerName">
+                <input type="text" class="form-control" id="timerName" placeholder="Enter Timer Name" name="timerName" required>
                 </div>
                 <div class="form-group">
-                <label for="activeTime">Active Time</label>
-                <input type="number" class="form-control" id="activeTime" placeholder="Enter Active Time" name="activeTime" max="240">
+                <label for="activeTime">Active Time (Hours:Minutes)</label>
+                <input type="text" placeholder="hr:mm" class="form-control" maxlength=5 pattern="(\d|[01]\d|2[0-3]):([0-5]\d$)" name="activeTime" id="activeTime" required>
                 </div>
                 <div class="form-group">
-                <label for="breakTime">Break Time</label>
-                <input type="number" class="form-control" id="breakTime" placeholder="Enter Break Time" name="breakTime" max="240">
+                <label for="breakTime">Break Time (Minutes:Seconds)</label>
+                <input type="text" placeholder="mm:ss" step="1" maxlength=5 pattern="(\d|[01]\d|5[0-9]):([0-5]\d$)" class="form-control" id="breakTime"  name="breakTime" required>
                 </div>
                 <div class="form-group">
-                <label for="numberOfRounds">Number of Rounds</label>
-                <input type="number" class="form-control" id="numberOfRounds" name="numberOfRounds" placeholder="Enter Number of Rounds" max="240">
+                <label for="numberOfRounds">Number of Rounds (0-20)</label>
+                <input type="text" class="form-control" id="numberOfRounds" name="numberOfRounds" placeholder="Enter Number of Rounds" pattern="(?:[0-9]|0[1-9]|1[0-9]|20)$" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
-    
-
         </div>
         
     </div>

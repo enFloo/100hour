@@ -9,6 +9,7 @@ const morgan = require('morgan');
 const {engine} = require('express-handlebars');
 const bodyParser = require('body-parser');
 const connectDB = require('./config/db');
+const {check, validationResults} = require('express-validator' );
 
 // const router = require('./routes/auth')
 
@@ -20,6 +21,7 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 
+//parse application JSON
 app.use(bodyParser.json());
 
 

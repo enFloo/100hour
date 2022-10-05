@@ -27,5 +27,6 @@ module.exports = {
                 res.render('timers', {data: timerData});
             }
         });
-    }
+    },
+
 }
