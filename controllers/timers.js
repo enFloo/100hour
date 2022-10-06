@@ -5,7 +5,7 @@ module.exports = {
     createTimer: async (req, res) => {
         try{
             await Timer.create({
-                id: req.body.id,
+                id: req.params.id,
                 timerName: req.body.timerName,
                 activeTime: req.body.activeTime,
                 breakTime: req.body.breakTime,
@@ -20,13 +20,20 @@ module.exports = {
     },
 
     getTimer: async(req, res) =>{
-        let timer = Timer;
 
-        let timerResults = await timer.find({}).lean().exec((err, timerData) =>{
-            if(timerData){
-                res.render('timers', {data: timerData});
-            }
-        });
+        const timerData = await Timer.find({}).lean().exec();
+
+        res.render('timers', {data: timerData})
+
+    },
+
+    showTimer: async(req, res) =>{
+        const timerData = await Timer.find({}).lean().exec();
+        const timerId = await Timer.findById(req.params.id).exec();
+
+        res.render('showTimer', {data: timerData, id: timerId});
+
+    
     },
 
 }

@@ -1,10 +1,6 @@
 const mongoose = require('mongoose')
 
 const TimerSchema = new mongoose.Schema({
-    id:{
-        type: String,
-        required: false
-    },
     timerName:{
         type: String,
         required: true
