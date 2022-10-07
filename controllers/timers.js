@@ -28,12 +28,13 @@ module.exports = {
     },
 
     showTimer: async(req, res) =>{
-        const timerData = await Timer.find({}).lean().exec();
-        const timerId = await Timer.findById(req.params.id).exec();
+        const timerlist = await Timer.find({}).lean().exec();
+        const timerById = await Timer.findById(req.params.id).exec();
+        console.log(timerById.activeTime)
 
-        res.render('showTimer', {data: timerData, id: timerId});
+        res.render('showTimer', {timerData: timerById});
 
-    
+        
     },
 
 }
