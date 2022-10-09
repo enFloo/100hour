@@ -19,7 +19,7 @@ router.post('/timers', ensureAuth, timersController.createTimer);
 
 // //@desc     show Timer
 // //@route    GET /showTimer/:id
-router.get('/showTimer/:id', ensureAuth, timersController.showTimer);
+router.get('/showTimer/:id', ensureAuth, timersController.showTimer, timersController.timerFunctions);
 
 
 module.exports = router

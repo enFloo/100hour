@@ -75,3 +75,37 @@ nav{
     border: 5px solid #E2DCC8;
 }
 
+.timerContainer{
+    position: relative;
+}
+
+/* Sets the containers height and width */
+.base-timer {
+    
+    height: 300px;
+    width: 300px;
+    
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(0%);
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+   
+  }
+  
+  /* Removes SVG styling that would hide the time label */
+  .base-timer__circle {
+    fill: none;
+    stroke: none;
+    align-self: center;
+    position: absolute;
+  }
+  
+  /* The SVG path that displays the timer's progress */
+  .base-timer__path-elapsed {
+    stroke-width: 7px;
+    stroke: grey;
+  }

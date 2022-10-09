@@ -48,9 +48,11 @@ module.exports = {
         }catch(err){
             console.log(err);
         }
+    },
+
+    timerFunctions: async (req, res) =>{
         
 
-        
-    },
+    }
 
 }
