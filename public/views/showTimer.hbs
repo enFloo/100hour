@@ -1,6 +1,7 @@
 <section>
    <a href="/timers" class="breadcrumb">My Timers</a>
     <div class="card">
+        <!-- Timer header -->
         <div class="card-content">
             {{#each timerData}}
 
@@ -9,8 +10,9 @@
             {{/each}}
         </div>
 
-
+        
         <section id="timerFunctions">
+            <!-- Timer circle -->
             <div class="timerContainer">
                 <div class="base-timer">
                     <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -18,15 +20,37 @@
                         <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45" />
                         </g>
                     </svg>
-                <span>
-                    <!-- Remaining time label -->
-                </span>
+                </div>
             </div>
 
+            <!-- Timer numbers -->
+            <section class="container timer">
+                <div>
+                    <div class="row">
+                        <div class="col-5">
+                            <h4 id="hours"></h4>
+                        </div>
+                        <div class="col-2">
+                            <h4>:</h4>
+                        </div>
+                        <div class="col-5">
+                            <h4 id="minutes"></h4>
 
-            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Timer Control buttons -->
+            <section class="container controlButtonsContainer">
+                <button class="btn controlButtons"><i class="fa fa-play"></i></button>
+                <button class="btn  controlButtons"><i class="fa fa-duotone fa-pause"></i></button>
+                <button class="btn  controlButtons"><i class="fa-solid fa-clock-rotate-left"></i></button>
+               
+            </section>
             
         </section>
     </div>
     
 </section>
+<script src="/scripts/timer.js"></script>

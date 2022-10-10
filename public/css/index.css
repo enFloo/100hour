@@ -109,3 +109,46 @@ nav{
     stroke-width: 7px;
     stroke: grey;
   }
+
+  .timer{
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-325%);
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+  }
+
+  .controlButtonsContainer{
+    position: relative;
+    bottom: 4em;
+    justify-content: center;
+   
+  }
+
+  .controlButtons{
+    margin-right: 1em;    
+    border: none;
+    background: none;
+   
+  }
+
+  .fa-play, .fa-pause, .fa-clock-rotate-left{
+    color:black;
+    
+   
+    
+  }
+
+  .fa-play:hover, .fa-pause:hover, .fa-clock-rotate-left:hover{
+    
+   
+    
+  }
+
+  .btn:hover{
+    background: #0F3D3E;
+    transition: 0.3s ease;
+  }

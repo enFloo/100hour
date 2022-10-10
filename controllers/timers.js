@@ -50,9 +50,4 @@ module.exports = {
         }
     },
 
-    timerFunctions: async (req, res) =>{
-        
-
-    }
-
 }
