@@ -1,4 +1,4 @@
-<section>
+<section onload="template()">
    <a href="/timers" class="breadcrumb">My Timers</a>
     <div class="card">
         <!-- Timer header -->
@@ -25,20 +25,20 @@
 
             <!-- Timer numbers -->
             <section class="container timer">
-                <div>
-                    <div class="row">
-                        <div class="col-5">
-                            <h4 id="hours"></h4>
-                        </div>
-                        <div class="col-2">
-                            <h4>:</h4>
-                        </div>
-                        <div class="col-5">
-                            <h4 id="minutes"></h4>
+                
+                <div class="row">
+                    <div class="column">
+                        <h4 class="size" id="hours"></h4>
+                    </div>
+                    <div class="column">
+                        <h4 class="size">:</h4>
+                    </div>
+                    <div class="column">
+                        <h4 class="size" id="minutes"></h4>
 
-                        </div>
                     </div>
                 </div>
+                
             </section>
 
             <!-- Timer Control buttons -->
@@ -51,6 +51,6 @@
             
         </section>
     </div>
+    <script src="/scripts/timer.js"></script>
     
 </section>
-<script src="/scripts/timer.js"></script>

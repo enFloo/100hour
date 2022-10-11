@@ -1,7 +1,7 @@
-let activeTime = document.querySelector('#activeTime');
-let breakTime = document.querySelector('#breakTime');
-console.log(breakTime)
+let hours = 03;
+let minutes = 35;
 
-function userInput(){
-    
+window.onload = function template(){
+    document.getElementById('hours').innerHTML = hours;
+    document.getElementById('minutes').innerHTML = minutes;
 }

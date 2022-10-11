@@ -114,13 +114,17 @@ nav{
     top: 50%;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
-    transform: translateY(-325%);
+    transform: translateY(-190%);
     left: 0;
     right: 0;
     margin: auto;
     text-align: center;
+    
   }
 
+  .size{
+    font-size: 5em;
+  }
   .controlButtonsContainer{
     position: relative;
     bottom: 4em;
@@ -142,13 +146,21 @@ nav{
     
   }
 
-  .fa-play:hover, .fa-pause:hover, .fa-clock-rotate-left:hover{
-    
-   
-    
-  }
 
   .btn:hover{
     background: #0F3D3E;
     transition: 0.3s ease;
   }
+
+  .row{
+    display: table;
+    width: 50%; /*Optional*/
+    table-layout: fixed; /*Optional*/
+    margin: none;
+    line-height: 0px;
+    
+  }
+
+  .column {
+    display: table-cell;
+}
