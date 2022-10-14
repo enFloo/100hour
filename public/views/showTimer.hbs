@@ -1,14 +1,18 @@
-<section onload="template()">
+<section >
    <a href="/timers" class="breadcrumb">My Timers</a>
     <div class="card">
         <!-- Timer header -->
         <div class="card-content">
-            {{#each timerData}}
-
-                <h3>{{timerName}}</h3>
-                
-            {{/each}}
+            <h3>{{timer.timerName}}</h3>
         </div>
+
+        
+
+        {{!-- <div class="card-content">
+
+            <h3>Header: {{ data.timerName }}</h3>
+            
+        </div> --}}
 
         
         <section id="timerFunctions">
@@ -48,9 +52,17 @@
                 <button class="btn  controlButtons"><i class="fa-solid fa-clock-rotate-left"></i></button>
                
             </section>
+
+            
+
+                <p><a href="/timer/{{_id}}/edit">Edit</a></p>
+                
+           
+            
+            
             
         </section>
     </div>
-    <script src="/scripts/timer.js"></script>
+    <script src="/scripts/timerScript.js"></script>
     
 </section>
