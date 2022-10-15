@@ -6,15 +6,15 @@ const TimerSchema = new mongoose.Schema({
         required: true
     },
     activeTime:{
-        type: String,
+        type: Number,
         required: true
     },
     breakTime:{
-        type: String,
+        type: Number,
         required: true
     },
     numberOfRounds:{
-        type: String,
+        type: Number,
         required: true
     }
 })

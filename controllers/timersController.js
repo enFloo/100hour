@@ -7,7 +7,7 @@ module.exports = {
         try {
             const collection = await Timer.find({}).lean().exec();
 
-            console.log(collection)
+            //console.log(collection)
             res.render('timers', {timers: collection})
             
         } catch (err) {
@@ -20,7 +20,7 @@ module.exports = {
         try{
             const timerById = await Timer.findById(req.params.id).lean().exec();
         
-            console.log(timerById)
+            //console.log(timerById)
             res.render('showTimer', {timer: timerById});
 
         }catch(err){
@@ -30,12 +30,15 @@ module.exports = {
 
     createTimer: async (req, res) => {
 
-        // convert req.body.activeTime to Number type
-        // convert req.body.breakTime to Number type
-
-        /// ... 
-
         try{
+            if(isNaN(parseFloat(req.body.activeTime.replace(/:/g, ""))) || isNaN(parseFloat(req.body.breakTime.replace(/:/g, "")))){
+                exit 
+            }
+            else{
+                req.body.activeTime = parseFloat(req.body.activeTime.replace(/:/g, ""))
+                req.body.breakTime = parseFloat(req.body.breakTime.replace(/:/g, ""))
+            }
+            
             await Timer.create({
                 id: req.params.id,
                 timerName: req.body.timerName,
