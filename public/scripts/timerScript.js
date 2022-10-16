@@ -1,15 +1,11 @@
-
-let hours = 03;
-let minutes = 35;
-
-
-
+let minutes = 03;
+let seconds = 33;
 
 
 
 
 window.onload = function timerFunctions(){
-    document.getElementById('hours').innerHTML = hours;
     document.getElementById('minutes').innerHTML = minutes;
+    document.getElementById('seconds').innerHTML = seconds;
     alert(timer.activeTime)
 }

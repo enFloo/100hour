@@ -1,4 +1,4 @@
-<section >
+<section onload="timerFunctions()">
    <a href="/timers" class="breadcrumb">My Timers</a>
     <div class="card">
         <!-- Timer header -->
@@ -23,13 +23,13 @@
                 
                 <div class="row">
                     <div class="column">
-                        <h4 class="size" id="hours"></h4>
+                        <h4 class="size" id="minutes"></h4>
                     </div>
                     <div class="column">
                         <h4 class="size">:</h4>
                     </div>
                     <div class="column">
-                        <h4 class="size" id="minutes"></h4>
+                        <h4 class="size" id="seconds"></h4>
 
                     </div>
                 </div>
@@ -46,7 +46,7 @@
 
             
 
-                <p><a href="/timer/{{this._id}}/edit">Edit</a></p>
+                <p><a href="/timers/{{timer._id}}/edit">Edit</a></p>
                 
            
             

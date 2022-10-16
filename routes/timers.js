@@ -16,12 +16,12 @@ router.post('/timers', ensureAuth, timersController.createTimer);
 
 
 //@desc     Get a single Timer
-//@route    GET /showTimer/:id
+//@route    GET /timers/:id
 router.get('/timers/:id', ensureAuth, timersController.getTimer);
 
-//@desc     edit Timer
-//@route    GET /timer/:id
-router.get('/timer/:id/edit', ensureAuth);
+//@desc     Edit a single Timer
+//@route    GET /timers/:id/edit
+router.get('/timers/:id/edit', ensureAuth, timersController.editTimer);
 
 
 module.exports = router

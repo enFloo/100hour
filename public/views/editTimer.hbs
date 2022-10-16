@@ -1,0 +1,29 @@
+<section>
+    <h3>Edit Timer</h3>
+    <div class="card ">
+        <div class="card-content">
+            <form action="/timers/{{timer._id}}?_method=PUT" method="POST">
+                <div class="form-group">
+                <label for="timerName">Timer Name</label>
+                <input type="text" class="form-control" id="timerName" placeholder="Enter Timer Name" name="timerName" value="{{timer.timerName}}" required>
+                </div>
+                <div class="form-group">
+                <label for="activeTime">Active Time (Minutes:Seconds)</label>
+                <input type="text" placeholder="mm:ss" class="form-control" maxlength=5 pattern="(\d|[01]\d|5[0-9]):([0-5]\d$)" name="activeTime" id="activeTime" {{#if timer}} value="{{timer.activeTime}}" {{/if}} required>
+                </div>
+                <div class="form-group">
+                <label for="breakTime">Break Time (Minutes:Seconds)</label>
+                <input type="text" placeholder="mm:ss" step="1" maxlength=5 pattern="(\d|[01]\d|5[0-9]):([0-5]\d$)" class="form-control" id="breakTime"  name="breakTime" value="{{timer.breakTime}}" required>
+                </div>
+                <div class="form-group">
+                <label for="numberOfRounds">Number of Rounds (0-20)</label>
+                <input type="text" class="form-control" id="numberOfRounds" name="numberOfRounds" placeholder="Enter Number of Rounds" pattern="(?:[0-9]|0[1-9]|1[0-9]|20)$" value="{{timer.numberOfRounds}}" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        
+    </div>
+    
+    
+</section>
