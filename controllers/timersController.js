@@ -30,7 +30,6 @@ module.exports = {
 
     editTimer: async (req, res) =>{
         try{
-            console.log('hello')
             const timer = await Timer.findById(req.params.id).lean().exec();
             res.render('editTimer', {timer: timer});
         }catch(err) {

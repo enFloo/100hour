@@ -1,4 +1,4 @@
-<section>
+<section onload="editInput">
     <h3>Edit Timer</h3>
     <div class="card ">
         <div class="card-content">
@@ -9,7 +9,7 @@
                 </div>
                 <div class="form-group">
                 <label for="activeTime">Active Time (Minutes:Seconds)</label>
-                <input type="text" placeholder="mm:ss" class="form-control" maxlength=5 pattern="(\d|[01]\d|5[0-9]):([0-5]\d$)" name="activeTime" id="activeTime" {{#if timer}} value="{{timer.activeTime}}" {{/if}} required>
+                <input type="text" placeholder="mm:ss" class="form-control" maxlength=5 pattern="(\d|[01]\d|5[0-9]):([0-5]\d$)" name="activeTime" id="activeTime" value="{{timer.activeTime }}" required>
                 </div>
                 <div class="form-group">
                 <label for="breakTime">Break Time (Minutes:Seconds)</label>
@@ -25,5 +25,6 @@
         
     </div>
     
+    <script src="/scripts/editFormScript.js"></script>
     
 </section>
