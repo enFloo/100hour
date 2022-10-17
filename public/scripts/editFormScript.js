@@ -1,19 +1,15 @@
 let activeTime = document.getElementById('activeTime').getAttribute('value');
 let breakTime = document.getElementById('breakTime').getAttribute('value');
 
+//adding colong and leading zeros to start and break time
 window.onload = function editInput(){
-    //add missing 0's
-    //turn it inot a string
-    //add colon
-    //return new input as value
-
     if(activeTime.length == 4){
-        String(activeTime);
-        activeTime = activeTime.replace(/(.{2})$/,':$1');
+        activeTime = String(activeTime).replace(/(.{2})$/,':$1');
         document.getElementById('activeTime').value = activeTime
     
     }else{
-        alert('dis bihh less than foe')
+        activeTime = String(activeTime).padStart(4, '0').replace(/(.{2})$/,':$1')
+        document.getElementById('activeTime').value = activeTime
     }
 
     if(breakTime.length == 4){
@@ -22,7 +18,8 @@ window.onload = function editInput(){
         document.getElementById('breakTime').value = breakTime
     
     }else{
-        alert('dis bihh less than foe')
+        breakTime = String(breakTime).padStart(4, '0').replace(/(.{2})$/,':$1')
+        document.getElementById('breakTime').value = breakTime
     }
     
 }
