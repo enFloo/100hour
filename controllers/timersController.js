@@ -38,10 +38,39 @@ module.exports = {
         }
     },
 
+    updateTimer: async (req, res) => {
+        try{
+            let updateId = req.params.id;
+            let updateTimerName = req.body.timerName;
+            let updateActiveTime = req.body.activeTime;
+            let updatebreakTime = req.body.breakTime;
+            let updateNumberOfRounds = req.body.numberOfRounds;
+            
+            const timer = await Timer.findByIdAndUpdate({updateId: req.params.id}, {$set:{timerName: updateTimerName, activeTime: updateActiveTime, breakTime: updatebreakTime, numberOfRounds: updateNumberOfRounds}},
+                {new:true},(err, data) =>{
+                    if(data == null){
+                        alert('nothing has been updated hoe')
+                    }else{
+                        res.send(data);
+                    }
+                }
+            );
+
+            console.log('hello');
+            res.render('dashboard')
+
+
+        }catch(err){
+            console.log(err);
+        }
+
+    },
+
     createTimer: async (req, res) => {
 
         try{
             if(isNaN(parseFloat(req.body.activeTime.replace(/:/g, ""))) || isNaN(parseFloat(req.body.breakTime.replace(/:/g, "")))){
+                //will need to come back to this
                 exit 
             }
             else{

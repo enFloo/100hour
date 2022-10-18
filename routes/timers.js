@@ -23,6 +23,11 @@ router.get('/timers/:id', ensureAuth, timersController.getTimer);
 //@route    GET /timers/:id/edit
 router.get('/timers/:id/edit', ensureAuth, timersController.editTimer);
 
+//@desc     Update a single Timer
+//@route    PUT /timers/:id
 
-module.exports = router
+router.put('/timers/:id', ensureAuth, timersController.updateTimer)
+
+
+module.exports = router 
 
