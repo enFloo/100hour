@@ -25,7 +25,6 @@ router.get('/timers/:id/edit', ensureAuth, timersController.editTimer);
 
 //@desc     Update a single Timer
 //@route    PUT /timers/:id
-
 router.put('/timers/:id', ensureAuth, timersController.updateTimer)
 
 

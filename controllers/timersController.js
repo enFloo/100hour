@@ -40,6 +40,7 @@ module.exports = {
 
     updateTimer: async (req, res) => {
         try{
+            alert('hello');
             let updateId = req.params.id;
             let updateTimerName = req.body.timerName;
             let updateActiveTime = req.body.activeTime;
@@ -49,15 +50,14 @@ module.exports = {
             const timer = await Timer.findByIdAndUpdate({updateId: req.params.id}, {$set:{timerName: updateTimerName, activeTime: updateActiveTime, breakTime: updatebreakTime, numberOfRounds: updateNumberOfRounds}},
                 {new:true},(err, data) =>{
                     if(data == null){
-                        alert('nothing has been updated hoe')
+                        alert('nothing has been updated')
                     }else{
                         res.send(data);
                     }
                 }
             );
 
-            console.log('hello');
-            res.render('dashboard')
+            res.render('dashboard', {timer: timer})
 
 
         }catch(err){
