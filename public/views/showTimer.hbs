@@ -44,9 +44,25 @@
                
             </section>
 
+            <section class="">
+                
+                <p><a class="" href="/timers/{{timer._id}}/edit">Edit</a></p>
+                <form
+                    action="/timers/{{timer._id}}?_method=DELETE"
+                    method="POST"
+                    class="col-3"
+                    >
+                    <button class="btn btn-primary fa fa-trash " type="submit"></button>
+                    
+                    
+                </form>
+                
+
+            </section>
+
             
 
-                <p><a href="/timers/{{timer._id}}/edit">Edit</a></p>
+                
                 
            
             

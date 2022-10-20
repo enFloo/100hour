@@ -71,6 +71,19 @@ module.exports = {
 
     },
 
+    deleteTimer: async (req, res) =>{   
+        try{
+            let timer = Timer.findById({_id: req.params.id});
+
+            await Timer.remove({_id: req.params.id});
+            console.log('Timer deleted');
+            res.redirect('/timers');
+        }catch(err){
+            res.redirect('/timers');
+        }
+
+    },
+
     createTimer: async (req, res) => {
 
         try{

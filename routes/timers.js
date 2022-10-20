@@ -27,6 +27,10 @@ router.get('/timers/:id/edit', ensureAuth, timersController.editTimer);
 //@route    PUT /timers/:id
 router.put('/timers/:id', timersController.updateTimer)
 
+//@desc     Delete a single Timer
+//@route    Delete /timers/:id
+router.delete('/timers/:id', timersController.deleteTimer)
+
 
 module.exports = router 
 
