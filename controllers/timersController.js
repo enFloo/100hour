@@ -32,33 +32,38 @@ module.exports = {
         try{
             const timer = await Timer.findById(req.params.id).lean().exec();
             res.render('editTimer', {timer: timer});
+            
         }catch(err) {
-            console.log('Timer has been edited!')
+            
             console.log(err)
         }
     },
 
     updateTimer: async (req, res) => {
         try{
-            alert('hello');
+            //check if active and break time user input is a number
+            if(isNaN(parseFloat(req.body.activeTime.replace(/:/g, ""))) || isNaN(parseFloat(req.body.breakTime.replace(/:/g, "")))){
+                //will need to come back to this
+                exit 
+            }
+            else{
+                req.body.activeTime = parseFloat(req.body.activeTime.replace(/:/g, ""))
+                req.body.breakTime = parseFloat(req.body.breakTime.replace(/:/g, ""))
+            }
+            
             let updateId = req.params.id;
             let updateTimerName = req.body.timerName;
             let updateActiveTime = req.body.activeTime;
             let updatebreakTime = req.body.breakTime;
             let updateNumberOfRounds = req.body.numberOfRounds;
             
-            const timer = await Timer.findByIdAndUpdate({updateId: req.params.id}, {$set:{timerName: updateTimerName, activeTime: updateActiveTime, breakTime: updatebreakTime, numberOfRounds: updateNumberOfRounds}},
-                {new:true},(err, data) =>{
-                    if(data == null){
-                        alert('nothing has been updated')
-                    }else{
-                        res.send(data);
-                    }
-                }
-            );
+            await Timer.findOneAndUpdate(
+            {updateId: req.params.id}, {$set:{timerName: updateTimerName, activeTime: updateActiveTime, breakTime: updatebreakTime, numberOfRounds: updateNumberOfRounds}}).lean().exec();
 
-            res.render('dashboard', {timer: timer})
-
+                    
+            console.log('Timer has been edited!')
+            res.redirect(`/timers/${req.params.id}`)
+            
 
         }catch(err){
             console.log(err);

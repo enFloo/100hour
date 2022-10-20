@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const passport = require('passport');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
+const methodOverride = require('method-override');
 const morgan = require('morgan');
 const {engine} = require('express-handlebars');
 const bodyParser = require('body-parser');
@@ -44,6 +45,10 @@ connectDB()
 if(process.env.NODE_ENV === 'development'){
   app.use(morgan('dev'))
 }
+
+//allow form to use put/delete 
+app.use(methodOverride('_method'));
+
 //setting the view engine with express-handlebars
 app.engine('hbs', engine({
   extname: ".hbs", 
