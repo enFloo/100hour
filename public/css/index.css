@@ -120,14 +120,20 @@ nav{
     margin: auto;
     text-align: center;
     
+    
   }
+
+  
 
   .size{
     font-size: 5em;
+    
   }
+
+
   .controlButtonsContainer{
     position: relative;
-    bottom: 4em;
+    top:2em;
     justify-content: center;
    
   }
@@ -137,6 +143,11 @@ nav{
     border: none;
     background: none;
    
+  }
+
+  .timerDescription{
+    margin-top: 4em;
+    margin-right: 1em
   }
 
   .fa-play, .fa-pause, .fa-clock-rotate-left{

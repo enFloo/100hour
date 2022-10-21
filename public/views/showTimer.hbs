@@ -1,4 +1,4 @@
-<section onload="timerFunctions()">
+<section>
    <a href="/timers" class="breadcrumb">My Timers</a>
     <div class="card">
         <!-- Timer header -->
@@ -7,41 +7,18 @@
         </div>
 
         <section id="timerFunctions">
-            <!-- Timer circle -->
-            <div class="timerContainer">
-                <div class="base-timer">
-                    <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <g class="base-timer__circle">
-                        <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45" />
-                        </g>
-                    </svg>
-                </div>
-            </div>
 
-            <!-- Timer numbers -->
-            <section class="container timer">
-                
-                <div class="row">
-                    <div class="column">
-                        <h4 class="size" id="minutes"></h4>
-                    </div>
-                    <div class="column">
-                        <h4 class="size">:</h4>
-                    </div>
-                    <div class="column">
-                        <h4 class="size" id="seconds"></h4>
+            <section id="app">
 
-                    </div>
-                </div>
-                
             </section>
 
-            <!-- Timer Control buttons -->
-            <section class="container controlButtonsContainer">
-                <button class="btn controlButtons"><i class="fa fa-play"></i></button>
-                <button class="btn  controlButtons"><i class="fa fa-duotone fa-pause"></i></button>
-                <button class="btn  controlButtons"><i class="fa-solid fa-clock-rotate-left"></i></button>
-               
+            
+
+            <section class="timerDescription">
+                <p>Active Time:</p><p id="activeTime">{{timer.activeTime}}</p>
+                <p>Break Time:</p><p id="breakTime">{{timer.breakTime}}</p>
+                
+                <p id="numberOfRounds">Number of Rounds: {{timer.numberOfRounds}}</p>
             </section>
 
             <section class="">
