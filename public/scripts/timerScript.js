@@ -1,4 +1,5 @@
 
+//add zeros and colon to timer active/break time
 window.addEventListener("load", editInput(), true); function editInput(){
     //grabbing values for timer function
     let activeTime = document.getElementById('activeTime').textContent;
@@ -25,6 +26,8 @@ window.addEventListener("load", editInput(), true); function editInput(){
 
 };
 
+
+//circular app, numbers, and timer buttons
 window.addEventListener('laod', timer(), true); function timer(){
     document.getElementById("app").innerHTML = `
         <div class="base-timer">
@@ -34,7 +37,7 @@ window.addEventListener('laod', timer(), true); function timer(){
             </g>
         </svg>
         <span id="base-timer-label" class="base-timer__label">
-            
+            ${timerFunctions()}
         </span>
         </div>
 
@@ -48,24 +51,49 @@ window.addEventListener('laod', timer(), true); function timer(){
         `
 }
 
-window.addEventListener('load', timerFunctions(activeTime), true); function timerFunctions(activeTime){
+window.addEventListener('load', timerFunctions(timesLeft), true); function timerFunctions(timesLeft){
     let activeMinutes = 0;
     let activeSeconds = 0;
+    let activeTotalSeconds = 0;
     let breakMinutes = 0;
     let breakSeconds = 0; 
+    let breakTotalSeconds = 0;
+    let timePassed = 0;
+    
 
+    //grabbing timer instructions from Timer-show page
     activeTime = document.getElementById('activeTime').textContent
     breakTime = document.getElementById('breakTime').textContent
 
+    //turning active timer instructions into numbers and variables
     activeMinutes = Number(activeTime.slice(0,2));
     activeSeconds = Number(activeTime.slice(3,5));
 
+    //getting total active seconds
+    activeTotalSeconds = (activeMinutes * 60) + activeSeconds;
+
+
+
+    //turning break timer instructions into numbers and variables
     breakMinutes = Number(breakTime.slice(0,2));
     breakSeconds = Number(breakTime.slice(3,5));
+
+    //getting total break seconds
+    breakTotalSeconds = (breakMinutes * 60) + breakSeconds;
+
+
+    if(activeMinutes <10){
+        activeMinutes = `0${activeMinutes}`;
+    }
 
     if(activeSeconds <10){
         activeSeconds = `0${activeSeconds}`;
     }
+
+    const ACTIVE_TIME_LIMIT = activeTotalSeconds;
+
+    
+
 
     return  `${activeMinutes}:${activeSeconds}`;
 
@@ -74,4 +102,5 @@ window.addEventListener('load', timerFunctions(activeTime), true); function time
 
     
 }
+
 

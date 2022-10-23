@@ -110,6 +110,12 @@ nav{
     stroke: grey;
   }
 
+  .base-timer__label{
+    position: relative;
+    bottom: 2.60em;
+    font-size: 80px;
+  }
+
   .timer{
     top: 50%;
     -webkit-transform: translateY(-50%);
