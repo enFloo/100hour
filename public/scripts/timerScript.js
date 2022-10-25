@@ -26,39 +26,90 @@ window.addEventListener("load", editInput(), true); function editInput(){
 
 };
 
+window.addEventListener('load', app(), true); function app(){
+    const semiCircles = document.querySelectorAll('.semiCircle');
+    const timer = document.querySelector('.timer')
 
-//circular app, numbers, and timer buttons
-window.addEventListener('laod', timer(), true); function timer(){
-    document.getElementById("app").innerHTML = `
-        <div class="base-timer">
-        <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <g class="base-timer__circle">
-            <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
-            </g>
-        </svg>
-        <span id="base-timer-label" class="base-timer__label">
-            ${timerFunctions()}
-        </span>
-        </div>
+    //input
+    const activeMin = 0;
+    const activeSec = 15;
+    const breakMin = 0;
+    const breakSec = 0;
 
-        <!-- Timer Control buttons -->
-            <section class="container controlButtonsContainer">
-                <button class="btn controlButtons"><i class="fa fa-play"></i></button>
-                <button class="btn  controlButtons"><i class="fa fa-duotone fa-pause"></i></button>
-                <button class="btn  controlButtons"><i class="fa-solid fa-clock-rotate-left"></i></button>
-               
-            </section>
-        `
+    const activeMinutes = activeMin * 60000;
+    const activeSeconds = activeSec * 1000;
+    const breakMinutes = breakMin * 60000;
+    const breakSeconds = breakSec * 1000;
+    const activeSetTime = activeMinutes + activeSeconds;
+    const breakSetTime = breakMinutes + breakSeconds;
+    const starTime = Date.now();
+    const activeFutureTime = starTime + activeSetTime;
+    const breakFutureTime = starTime + breakSetTime;
+
+    const timerLoop = setInterval(countDownTimer);
+    countDownTimer();
+
+    function countDownTimer(){
+        const currentTime = Date.now()
+        const activeRemainingTime = activeFutureTime - currentTime;
+        const breakRemainingTime = breakFutureTime - currentTime;
+        const activeAngle = (activeRemainingTime / activeSetTime) * 360;
+        const breakAngle = (breakRemainingTime / breakSetTime) * 360;
+
+
+        // Active progress indicator
+        if(activeAngle > 180){
+            semiCircles[2].style.display = 'none';
+            semiCircles[0].style.transform = 'rotate(180deg)';
+            semiCircles[1].style.transform = 'rotate(${activeAngle}deg)';
+        }else{
+            semiCircles[2].style.display = 'block';
+            semiCircles[0].style.transform = 'rotate(activeAngle}deg)';
+            semiCircles[1].style.transform = 'rotate(${activeAngle}deg)';
+        }
+
+
+        //timer
+        const activeMin = Math.floor((activeRemainingTime / (1000 * 60)) % 60).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false});
+        const activeSec = Math.floor((activeRemainingTime/ 1000) % 6000);
+
+        timer.innerHTML = `
+        <div> ${activeMin}</div>
+        <div class="colon">:</div>
+        <div> ${activeSec}</div>`;
+
+        //5sec-condition
+        if(activeRemainingTime <= 6000){
+            semiCircles[0].style.backgroundColor = 'red';
+            semiCircles[1].style.background = 'red';
+            timer.style.color = 'red';
+        }
+
+        //end
+        if(activeRemainingTime < 0){
+            clearInterval(timerLoop);
+            semiCircles[0].style.display = 'none';semiCircles[1].style.display = 'none';semiCircles[2].style.display = 'none';
+
+            timer.innerHTML = `
+            <div>00</div>
+            <div class="colon">:</div>
+            <div>00</div>`;
+
+            timer.style.color = 'lightgray'
+
+        }
+
+    }
 }
 
-window.addEventListener('load', timerFunctions(timesLeft), true); function timerFunctions(timesLeft){
+
+window.addEventListener('laod', formatTimeLeft(), true); function formatTimeLeft(){
     let activeMinutes = 0;
-    let activeSeconds = 0;
+    let activeSeconds = 0; 
     let activeTotalSeconds = 0;
     let breakMinutes = 0;
     let breakSeconds = 0; 
     let breakTotalSeconds = 0;
-    let timePassed = 0;
     
 
     //grabbing timer instructions from Timer-show page
@@ -82,6 +133,7 @@ window.addEventListener('load', timerFunctions(timesLeft), true); function timer
     breakTotalSeconds = (breakMinutes * 60) + breakSeconds;
 
 
+    //adding padded 0's
     if(activeMinutes <10){
         activeMinutes = `0${activeMinutes}`;
     }
@@ -90,17 +142,8 @@ window.addEventListener('load', timerFunctions(timesLeft), true); function timer
         activeSeconds = `0${activeSeconds}`;
     }
 
-    const ACTIVE_TIME_LIMIT = activeTotalSeconds;
-
-    
-
-
     return  `${activeMinutes}:${activeSeconds}`;
-
-    
-    
-
-    
 }
+
 
 

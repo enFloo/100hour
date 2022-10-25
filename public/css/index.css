@@ -1,60 +1,60 @@
 * { 
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .debug{
-    border: 5px solid red;
+  border: 5px solid red;
 }
 
 
 
 h3 {
-    font-size: 4em;
+  font-size: 4em;
 }
 
 p{
-    margin: 1em 0em !important;
+  margin: 1em 0em !important;
 }
 
 .login-container{
-    width:400px;
-    margin-top:50px;
-    text-align: center;
+  width:400px;
+  margin-top:50px;
+  text-align: center;
 }
 
 .divider{
-    margin: 1em 0em;
+  margin: 1em 0em;
 }
 
 body {
-    background-color: #E2DCC8;
+  background-color: #E2DCC8;
 }
 
 nav{
-    background-color: #100F0F;
+  background-color: #100F0F;
 }
 
 .defaultpic{
-    width:13em;
-    height: 12em;
+  width:13em;
+  height: 12em;
 }
 
 .profilepic{
-    width:12em;
-    height: 11em;
+  width:12em;
+  height: 11em;
 }
 
 .dashbody{ 
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    background-color: #fff;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background-color: #fff;
     
     
 }
@@ -65,119 +65,149 @@ nav{
 }
 
 .dashMiddle{
-    height: 20em;
-    display: flex;
-    flex-direction: row;
+  height: 20em;
+  display: flex;
+  flex-direction: row;
 }
 
 .dashColumn{
-    flex: 1 1 auto;
-    border: 5px solid #E2DCC8;
+  flex: 1 1 auto;
+  border: 5px solid #E2DCC8;
 }
 
-.timerContainer{
-    position: relative;
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Sets the containers height and width */
-.base-timer {
-    
-    height: 300px;
-    width: 300px;
-    
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(0%);
-    left: 0;
-    right: 0;
-    margin: auto;
-    text-align: center;
-   
-  }
+.main-container{
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+
+}
+
+.circular-container{
+  width: 400px;
+  height: 400px;
+  background-color: #ddd;
+  border-radius: 50%;
+  position: absolute;
+  /* overflow: hidden; */
+  z-index: 1;
+}
+
+.semiCircle{
+  width: 50%;
+  height:100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: right center;
+
+}
+
+.semiCircle:nth-child(1){
+  background-color: #088b8b;
+  z-index: 2;
+}
+
+.semiCircle:nth-child(2){
+  background-color: #088b8b;
+  z-index: 3;
+}
+
+.semiCircle:nth-child(3){
+  background-color: #ddd;
+  z-index: 4;
+  display:none;
+}
+
+.outermost-circle{
+  width: 390px;
+  height: 390px;
+  background-color: white;
+  border-radius: 50%;
+  z-index: 5;
+}
+
+.timer-container{
+  width: 330px;
+  height: 200px;
+  z-index: 6;
+
+}
+
+.timer{
+  width: 400px;
+  height: 100px;
+  z-index: 7;
+}
+
+.timer div{
+  font-size: 70px;
+  font-weight: 100;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px 0 10px;
+}
+
+.timer .colon{
+  background-color: transparent;
+  width: 10px;
+  margin-left: 0px;
+  margin-right: 0;
+  padding-bottom: 15px;
+}
+
+
+
+
+.controlButtonsContainer{
+  position: relative;
+  top:2em;
+  justify-content: center;
   
-  /* Removes SVG styling that would hide the time label */
-  .base-timer__circle {
-    fill: none;
-    stroke: none;
-    align-self: center;
-    position: absolute;
-  }
+}
+
+.controlButtons{
+  margin-right: 1em;    
+  border: none;
+  background: none;
   
-  /* The SVG path that displays the timer's progress */
-  .base-timer__path-elapsed {
-    stroke-width: 7px;
-    stroke: grey;
-  }
+}
 
-  .base-timer__label{
-    position: relative;
-    bottom: 2.60em;
-    font-size: 80px;
-  }
+.timerDescription{
+  margin-top: 4em;
+  margin-right: 1em
+}
 
-  .timer{
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-190%);
-    left: 0;
-    right: 0;
-    margin: auto;
-    text-align: center;
-    
-    
-  }
-
+.fa-play, .fa-pause, .fa-clock-rotate-left{
+  color:black;
   
-
-  .size{
-    font-size: 5em;
-    
-  }
+  
+  
+}
 
 
-  .controlButtonsContainer{
-    position: relative;
-    top:2em;
-    justify-content: center;
-   
-  }
+.btn:hover{
+  background: #0F3D3E;
+  transition: 0.3s ease;
+}
 
-  .controlButtons{
-    margin-right: 1em;    
-    border: none;
-    background: none;
-   
-  }
+.row{
+  display: table;
+  width: 50%; /*Optional*/
+  table-layout: fixed; /*Optional*/
+  margin: none;
+  line-height: 0px;
+  
+}
 
-  .timerDescription{
-    margin-top: 4em;
-    margin-right: 1em
-  }
-
-  .fa-play, .fa-pause, .fa-clock-rotate-left{
-    color:black;
-    
-   
-    
-  }
-
-
-  .btn:hover{
-    background: #0F3D3E;
-    transition: 0.3s ease;
-  }
-
-  .row{
-    display: table;
-    width: 50%; /*Optional*/
-    table-layout: fixed; /*Optional*/
-    margin: none;
-    line-height: 0px;
-    
-  }
-
-  .column {
-    display: table-cell;
+.column {
+  display: table-cell;
 }
