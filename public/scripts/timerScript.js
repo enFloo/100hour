@@ -31,10 +31,19 @@ window.addEventListener('load', app(), true); function app(){
     const timer = document.querySelector('.timer')
 
     //input
-    const activeMin = 0;
-    const activeSec = 15;
+    
     const breakMin = 0;
     const breakSec = 0;
+
+    //grabbing timer instructions from Timer-show page
+    activeTime = document.getElementById('activeTime').textContent
+    breakTime = document.getElementById('breakTime').textContent
+
+    
+    //turning active timer instructions into numbers and variables
+    const activeMin = Number(activeTime.slice(0,2));
+    const activeSec = Number(activeTime.slice(3,5));
+   
 
     const activeMinutes = activeMin * 60000;
     const activeSeconds = activeSec * 1000;
@@ -56,22 +65,25 @@ window.addEventListener('load', app(), true); function app(){
         const activeAngle = (activeRemainingTime / activeSetTime) * 360;
         const breakAngle = (breakRemainingTime / breakSetTime) * 360;
 
-
+            
         // Active progress indicator
         if(activeAngle > 180){
             semiCircles[2].style.display = 'none';
             semiCircles[0].style.transform = 'rotate(180deg)';
-            semiCircles[1].style.transform = 'rotate(${activeAngle}deg)';
+            semiCircles[1].style.transform = `rotate(${activeAngle}deg)`;
+            timer.style.color = '#088b8b';
         }else{
             semiCircles[2].style.display = 'block';
-            semiCircles[0].style.transform = 'rotate(activeAngle}deg)';
-            semiCircles[1].style.transform = 'rotate(${activeAngle}deg)';
+            semiCircles[0].style.transform = `rotate(${activeAngle}deg)`;
+            semiCircles[1].style.transform = `rotate(${activeAngle}deg)`;
         }
 
 
         //timer
         const activeMin = Math.floor((activeRemainingTime / (1000 * 60)) % 60).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false});
-        const activeSec = Math.floor((activeRemainingTime/ 1000) % 6000);
+        const activeSec = Math.floor((activeRemainingTime/ 1000) % 60).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false});
+
+    
 
         timer.innerHTML = `
         <div> ${activeMin}</div>
