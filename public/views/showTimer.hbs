@@ -10,7 +10,6 @@
 
             <section class=" main-container center">
                 <div class="circle-container center ">
-                    
                     <div class="semiCircle"></div>
                     <div class="semiCircle"></div>
                     <div class="semiCircle"></div>
@@ -19,11 +18,7 @@
 
                 {{!-- timer --}}
                 <div class="timer-container center">
-                    <div class="timer center">
-                        
-
-                    </div>
-
+                    <div class="center" id="timerDisplay"></div>
                 </div>
 
             </section>
@@ -32,7 +27,7 @@
             <section class="container controlButtonsContainer">
                 <button class="btn controlButtons " id="startButton"><i class="fa fa-play"></i></button>
                 <button class="btn  controlButtons " id="pauseButton"><i class="fa fa-duotone fa-pause"></i></button>
-                <button class="btn  controlButtons" id="resetButton"><i class="fa-solid fa-clock-rotate-left"></i></button>
+                <button class="btn  controlButtons" id="restartButton"><i class="fa-solid fa-clock-rotate-left"></i></button>
 
             </section>
 
@@ -71,6 +66,10 @@
             
         </section>
     </div>
+    <script>
+        const sessionActiveTime = {{timer.activeTime}};
+        const sessionBreakTime = {{timer.breakTime}};
+    </script>
     <script src="/scripts/timerScript.js"></script>
     
 </section>

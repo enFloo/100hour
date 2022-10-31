@@ -140,31 +140,14 @@ nav{
   z-index: 6;
 }
 
-.timer{
+#timerDisplay {
   width: 400px;
   height: 100px;
   z-index: 7;
-}
-
-.timer div{
   font-size: 70px;
-  font-weight: 80px;
-  width: 80px;
-  height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  font-weight: bold;
   margin: 0 10px 0 10px;
 }
-
-.timer .colon{
-  background-color: transparent;
-  width: 10px;
-  margin-left: 0;
-  margin-right: 0;
-  padding-bottom: 15px;
-}
-
 
 /* Control buttons */
 .controlButtonsContainer{
