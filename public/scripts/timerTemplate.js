@@ -10,7 +10,4 @@ function modifyTemplateSeconds(){
     document.getElementById('activeTime').textContent = templateActiveTime;
     document.getElementById('breakTime').textContent = templateBreakTime;
 
-
-    debugger
-
 }
