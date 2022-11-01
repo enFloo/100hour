@@ -85,16 +85,16 @@ module.exports = {
     },
 
     createTimer: async (req, res) => {
+        
+        
+
 
         try{
-            if(isNaN(parseFloat(req.body.activeTime.replace(/:/g, ""))) || isNaN(parseFloat(req.body.breakTime.replace(/:/g, "")))){
-                //will need to come back to this
-                exit 
-            }
-            else{
-                req.body.activeTime = parseFloat(req.body.activeTime.replace(/:/g, ""))
-                req.body.breakTime = parseFloat(req.body.breakTime.replace(/:/g, ""))
-            }
+            const activeInput = req.body.activeTime.split(':');
+            const breakInput = req.body.breakTime.split(':')
+            req.body.activeTime = ((+activeInput[0] * 60) + (+activeInput[1]));
+            req.body.breakTime = ((+breakInput[0] * 60) + (+breakInput[1]));
+
             
             await Timer.create({
                 id: req.params.id,
