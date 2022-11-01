@@ -41,24 +41,20 @@ module.exports = {
 
     updateTimer: async (req, res) => {
         try{
-            //check if active and break time user input is a number
-            if(isNaN(parseFloat(req.body.activeTime.replace(/:/g, ""))) || isNaN(parseFloat(req.body.breakTime.replace(/:/g, "")))){
-                //will need to come back to this
-                exit 
-            }
-            else{
-                req.body.activeTime = parseFloat(req.body.activeTime.replace(/:/g, ""))
-                req.body.breakTime = parseFloat(req.body.breakTime.replace(/:/g, ""))
-            }
+            const activeInput = req.body.activeTime.split(':');
+            const breakInput = req.body.breakTime.split(':')
+            
+
             
             let updateId = req.params.id;
             let updateTimerName = req.body.timerName;
-            let updateActiveTime = req.body.activeTime;
-            let updatebreakTime = req.body.breakTime;
+            let updateActiveTime = ((+activeInput[0] * 60) + (+activeInput[1]));
+            let updatebreakTime = ((+breakInput[0] * 60) + (+breakInput[1]));
             let updateNumberOfRounds = req.body.numberOfRounds;
             
             await Timer.findOneAndUpdate(
             {updateId: req.params.id}, {$set:{timerName: updateTimerName, activeTime: updateActiveTime, breakTime: updatebreakTime, numberOfRounds: updateNumberOfRounds}}).lean().exec();
+            debugger
 
                     
             console.log('Timer has been edited!')
