@@ -48,9 +48,16 @@ function update_circle() {
 
     if (timeRemaining <= 0) {
         clearInterval(timerInterval); // Clear the timer loop
+        incrementRoundsCompleted();
         breakTimeOn();
         
+        
     }
+}
+
+function incrementRoundsCompleted(){
+    roundsCompleted = roundsCompleted + 1;
+    roundsLeft = numberOfRoundsTotal - roundsCompleted;
 }
 
 function update_break_circle(){
@@ -79,7 +86,8 @@ function update_break_circle(){
     }
 
     if (breakTimeRemaining <= 0) {
-        clearInterval(timerInterval);
+        clearInterval(breakInterval);
+        incrementRoundsCompleted();
     }
 }
 
@@ -92,38 +100,60 @@ function breakTimeOn(){
     breakTimerDisplayElm.style.display = 'block';
     breakTimerDisplayElm.style.color = '#8B088B'
     breakTimerDisplayElm.innerText = format_timer(breakTimeRemaining);
+    timerInterval = null;
     break_interval();
+    resume_timer();
 }
 
 function break_interval(){
     update_break_timer();
-    breakInterval = setInterval(update_break_timer, 1000);
-
+    breakInterval = setInterval(update_break_timer, 1000);  
+    
 }
 
 function pause_timer() {
-    if (!isPaused) {
-        clearInterval(timerInterval); // Clear the timer loop
+    if(!isPaused){
+        if(timerInterval){
+            clearInterval(timerInterval);
+        }
+
+        if(breakInterval){
+            clearInterval(breakInterval)
+        }
         isPaused = true;
     }
+    
+    
 }
 
 function resume_timer() {
-    if (isPaused) {
-        update_timer();
-        timerInterval = setInterval(update_timer, 1000);
-        isPaused = false;
+
+    if(isPaused){  
+        if(roundsCompleted % 2 ==0){
+            update_timer();
+            timerInterval = setInterval(update_timer, 1000);
+        } 
+        
+        if(!roundsCompleted % 2 ==0){
+            break_interval();
+        }
+
     }
+    
+    isPaused = false;  
 }
 
 function restart_timer() {
     pause_timer();
+    numberOfRoundsTotal = 0;
 
-    timeRemaining = sessionActiveTime;
-
-    breakTimeRemaining = sessionBreakTime;
-   
+    if(roundsCompleted % 2 ==0){
+        timeRemaining = sessionActiveTime;
+    } 
     
+    if(!roundsCompleted % 2 ==0){
+        breakTimeRemaining = sessionBreakTime;
+    }
     resume_timer();
     
 }
