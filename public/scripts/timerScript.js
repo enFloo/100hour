@@ -49,7 +49,7 @@ function update_circle() {
     if (timeRemaining <= 0) {
         clearInterval(timerInterval); // Clear the timer loop
         incrementRoundsCompleted();
-        breakTimeOn();
+        breakTimeOn(); // makes breakTimer numbers and circle appear
         
         
     }
@@ -91,18 +91,22 @@ function update_break_circle(){
     }
 }
 
-function activeTimeOn(){
-    breakTimerDisplayElm.style.display = 'none';
-}
-
 function breakTimeOn(){
     timerDisplayElm.style.display = 'none';
     breakTimerDisplayElm.style.display = 'block';
     breakTimerDisplayElm.style.color = '#8B088B'
     breakTimerDisplayElm.innerText = format_timer(breakTimeRemaining);
-    timerInterval = null;
     break_interval();
     resume_timer();
+}
+
+function activeTimeOn(){
+    breakTimerDisplayElm.style.display = 'none';
+    // timerDisplayElm.style.display = 'block';
+    // timerDisplayElm.style.color = '#088b8b'
+    // timeRemaining = sessionActiveTime;
+    // timerDisplayElm.innerText = format_timer(timeRemaining)
+
 }
 
 function break_interval(){
@@ -182,7 +186,7 @@ function app() {
     breakTimeRemaining = sessionBreakTime;
     numberOfRoundsTotal = sessionNumberOfRounds;
 
-    activeTimeOn();
+    breakTimerDisplayElm.style.display = 'none';
     timerDisplayElm.innerText = format_timer(timeRemaining);
 
     update_circle();
