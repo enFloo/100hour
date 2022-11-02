@@ -149,6 +149,15 @@ nav{
   margin: 0 10px 0 10px;
 }
 
+#breakTimerDisplay {
+  width: 400px;
+  height: 100px;
+  z-index: 7;
+  font-size: 70px;
+  font-weight: bold;
+  margin: 0 10px 0 10px;
+}
+
 /* Control buttons */
 .controlButtonsContainer{
   position: relative;

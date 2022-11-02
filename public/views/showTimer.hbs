@@ -19,6 +19,7 @@
                 {{!-- timer --}}
                 <div class="timer-container center">
                     <div class="center" id="timerDisplay"></div>
+                    <div class="center" id="breakTimerDisplay"></div>
                 </div>
 
             </section>
@@ -69,8 +70,9 @@
     <script>
         const sessionActiveTime = {{timer.activeTime}};
         const sessionBreakTime = {{timer.breakTime}};
+        const sessionNumberOfRounds = {{timer.numberOfRounds}}
     </script>
     <script src="/scripts/timerScript.js"></script>
-    <script src="/scripts/timerTemplate.js"></script>
+    <script src="/scripts/timerTemplateScript.js"></script>
     
 </section>
