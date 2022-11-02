@@ -26,6 +26,8 @@ function update_break_timer(){
 // Function that shows timer progress with a colored ring
 function update_circle() {
     let currentAngle = (timeRemaining / sessionActiveTime) * 360;
+    semiCircleElements[0].style.backgroundColor = '#088b8b';
+    semiCircleElements[1].style.backgroundColor = '#088b8b';
     
     // Active progress indicator
     if (currentAngle > 180) {
@@ -55,14 +57,9 @@ function update_circle() {
     }
 }
 
-function incrementRoundsCompleted(){
-    roundsCompleted = roundsCompleted + 1;
-    roundsLeft = numberOfRoundsTotal - roundsCompleted;
-}
-
 function update_break_circle(){
     let breakCurrentAngle = (breakTimeRemaining / sessionBreakTime) * 360;
-    let roundsLeft = numberOfRoundsTotal - roundsCompleted;
+    let roundsLeft = (numberOfRoundsTotal * 2) - roundsCompleted;
     semiCircleElements[0].style.backgroundColor = '#8B088B';
     semiCircleElements[1].style.backgroundColor = '#8B088B';
 
@@ -85,10 +82,29 @@ function update_break_circle(){
         breakTimerDisplayElm.style.color = 'red';
     }
 
-    if (breakTimeRemaining <= 0) {
+    if(roundsCompleted === 12){
+        pause_timer();
+        clearInterval(breakTimeRemaining)
+        clearInterval(timeRemaining)
+        semiCircleElements[0].style.display = 'none';
+        semiCircleElements[1].style.display = 'none';
+        semiCircleElements[2].style.display = 'none';
+        timerDisplayElm.style.color = 'lightgray';
+        breakTimerDisplayElm.innerText = "Workout Complete!"
+    }
+
+    if (breakTimeRemaining <= 0 && roundsCompleted < 12) {
         clearInterval(breakInterval);
         incrementRoundsCompleted();
+        isPaused = true;
+        activeTimeOn();
     }
+
+}
+function incrementRoundsCompleted(){
+    roundsLeft = numberOfRoundsTotal - roundsCompleted;
+    roundsCompleted = roundsCompleted + 1;
+    
 }
 
 function breakTimeOn(){
@@ -97,15 +113,18 @@ function breakTimeOn(){
     breakTimerDisplayElm.style.color = '#8B088B'
     breakTimerDisplayElm.innerText = format_timer(breakTimeRemaining);
     break_interval();
-    resume_timer();
+    
 }
 
 function activeTimeOn(){
     breakTimerDisplayElm.style.display = 'none';
-    // timerDisplayElm.style.display = 'block';
-    // timerDisplayElm.style.color = '#088b8b'
-    // timeRemaining = sessionActiveTime;
-    // timerDisplayElm.innerText = format_timer(timeRemaining)
+    timerDisplayElm.style.display = 'block';
+    timerDisplayElm.style.color = '#088b8b'; 
+    timeRemaining = sessionActiveTime;
+    update_circle();
+    timerDisplayElm.innerText = format_timer(timeRemaining)
+    resume_timer();
+    
 
 }
 
@@ -126,6 +145,7 @@ function pause_timer() {
         }
         isPaused = true;
     }
+    console.log('pause_timer') 
     
     
 }
@@ -138,13 +158,14 @@ function resume_timer() {
             timerInterval = setInterval(update_timer, 1000);
         } 
         
-        if(!roundsCompleted % 2 ==0){
+        if(roundsCompleted % 2 !==0){
             break_interval();
         }
 
     }
     
-    isPaused = false;  
+    isPaused = false; 
+    console.log("resume_timer") 
 }
 
 function restart_timer() {
@@ -155,7 +176,7 @@ function restart_timer() {
         timeRemaining = sessionActiveTime;
     } 
     
-    if(!roundsCompleted % 2 ==0){
+    if(roundsCompleted % 2 !==0){
         breakTimeRemaining = sessionBreakTime;
     }
     resume_timer();
