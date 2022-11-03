@@ -61,7 +61,7 @@ function update_break_circle(){
         clearInterval(breakInterval)
         breakTimerDisplayElm.style.display = 'none' //hides active time in circle
         incrementRoundsCompleted();
-        incrementIntervalsCompleted();
+        intervalsLeftElm.innerText = incrementIntervalsCompleted();
         semiCircleElements[0].style.backgroundColor = '#088b8b';
         semiCircleElements[1].style.backgroundColor = '#088b8b';
         timerDisplayElm.style.display = 'block'; // shows break time in circle
@@ -88,7 +88,7 @@ function incrementIntervalsCompleted(){ // Two roundsCompeleted equals one Inter
     intervalsCompleted = intervalsCompleted + 1;
     intervalsLeft = totalIntervals - intervalsCompleted
 
-    return intervalsLeft;
+    return `Rounds Left: ${intervalsLeft}`;
 }
 
 function incrementRoundsCompleted(){
@@ -164,8 +164,6 @@ function restart_timer() {
     }
     breakTimerDisplayElm.style.display = 'none';
     timerDisplayElm.style.color = '#088b8b'; //changes timer font color
-    // semiCircleElements[0].style.backgroundColor = 'block';
-    // semiCircleElements[1].style.backgroundColor = 'block';
     semiCircleElements[0].style.backgroundColor = '#088b8b';
     semiCircleElements[1].style.backgroundColor = '#088b8b';
     activeTimeRemaining = sessionActiveTime;
@@ -201,6 +199,7 @@ function app() {
     activeTimeRemaining = sessionActiveTime;
     breakTimeRemaining = sessionBreakTime;
     totalIntervals = sessionNumberOfRounds;
+    
 
     breakTimerDisplayElm.style.display = 'none'
     timerDisplayElm.style.color = '#088b8b'; //changes timer font color
@@ -212,7 +211,8 @@ function app() {
     document.getElementById('pauseButton').onclick = pause_timer;
     document.getElementById('restartButton').onclick = restart_timer;
     // Show number of intervals left in template
-    intervalsLeftElm.innerText = `Rounds Left: ${intervalsLeft}`
+    
+    intervalsLeftElm.innerText = `Rounds left: ${totalIntervals}`;
 }
 
 
