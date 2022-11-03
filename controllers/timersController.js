@@ -54,7 +54,6 @@ module.exports = {
             
             await Timer.findOneAndUpdate(
             {updateId: req.params.id}, {$set:{timerName: updateTimerName, activeTime: updateActiveTime, breakTime: updatebreakTime, numberOfRounds: updateNumberOfRounds}}).lean().exec();
-            debugger
 
                     
             console.log('Timer has been edited!')

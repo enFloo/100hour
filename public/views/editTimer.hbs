@@ -9,11 +9,11 @@
                 </div>
                 <div class="form-group">
                 <label for="activeTime">Active Time (Minutes:Seconds)</label>
-                <input type="text" placeholder="mm:ss" class="form-control" maxlength=5 pattern="(\d|[01]\d|5[0-9]):([0-5]\d$)" name="activeTime" id="activeTime" value="{{timer.activeTime }}" required>
+                <input type="text" placeholder="mm:ss" class="form-control" maxlength=5 pattern="(\d|[01]\d|5[0-9]):([0-5]\d$)" name="activeTime" id="activeTime"  required>
                 </div>
                 <div class="form-group">
                 <label for="breakTime">Break Time (Minutes:Seconds)</label>
-                <input type="text" placeholder="mm:ss" step="1" maxlength=5 pattern="(\d|[01]\d|5[0-9]):([0-5]\d$)" class="form-control" id="breakTime"  name="breakTime" value="{{timer.breakTime}}" required>
+                <input type="text" placeholder="mm:ss" step="1" maxlength=5 pattern="(\d|[01]\d|5[0-9]):([0-5]\d$)" class="form-control" id="breakTime"  name="breakTime"  required>
                 </div>
                 <div class="form-group">
                 <label for="numberOfRounds">Number of Rounds (0-20)</label>
@@ -24,7 +24,13 @@
         </div>
         
     </div>
-    
+    <script>
+        const sessionActiveTime = {{timer.activeTime}};
+        const sessionBreakTime = {{timer.breakTime}};
+        const sessionNumberOfRounds = {{timer.numberOfRounds}}
+    </script>
     <script src="/scripts/editFormScript.js"></script>
+    
+    
     
 </section>
