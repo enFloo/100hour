@@ -5,7 +5,8 @@ module.exports = {
 
     getTimers: async (req, res) => {
         try {
-            const collection = await Timer.find({}).lean().exec();
+            let mySort = {_id: -1}
+            const collection = await Timer.find({}).sort(mySort).lean().exec();
 
             //console.log(collection)
             res.render('timers', {timers: collection})
