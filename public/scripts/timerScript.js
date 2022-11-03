@@ -127,8 +127,11 @@ function pause_timer() {
 }
 
 function resume_timer() {
-    timer();
-    isPaused = false; 
+    if(isPaused){
+        timer();
+        isPaused = false; 
+    }
+    
     console.log("resume_timer") 
 }
 
