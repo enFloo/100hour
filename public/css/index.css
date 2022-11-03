@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+#loginButton{
+  background-color: #cf4332;
+}
+
 .debug{
   border: 5px solid red;
 }
