@@ -86,6 +86,30 @@ function format_timer(totalSeconds) {
     return timeString;
 }
 
+function timer(){
+    
+    if(roundsCompleted % 2 == 0){
+        
+        activeInterval = setInterval(() =>{
+            activeTimeRemaining-- //decrements total time
+            timerDisplayElm.innerText = format_timer(activeTimeRemaining); //Shows time in circle
+            update_circle();// timer bar animation
+        },1000)
+    }
+
+    if(roundsCompleted % 2 !== 0){
+        timerDisplayElm.style.display = 'none' //hides active time in circle
+        breakTimerDisplayElm.style.color = '#8B088B';
+        update_break_circle();
+        
+        breakInterval = setInterval(() =>{ 
+            breakTimeRemaining-- //decrements total break time
+            breakTimerDisplayElm.innerText = format_timer(breakTimeRemaining); //Shows break time in circle
+            update_break_circle();
+        },1000)
+    }
+}
+
 function pause_timer() {
     if(!isPaused){
         if(activeInterval){
@@ -109,42 +133,24 @@ function resume_timer() {
 }
 
 function restart_timer() {
-    pause_timer();
-    numberOfRoundsTotal = 0;
-
-    if(roundsCompleted % 2 ==0){
-        timeRemaining = sessionActiveTime;
-    } 
-    
-    if(roundsCompleted % 2 !==0){
-        breakTimeRemaining = sessionBreakTime;
+    clearInterval(activeInterval);
+    clearInterval(breakInterval);
+    roundsCompleted = 0;
+    if(timerDisplayElm.style.display = 'none'){
+        timerDisplayElm.style.display = 'block';
     }
-    resume_timer();
-    
-}
+    breakTimerDisplayElm.style.display = 'none';
+    timerDisplayElm.style.color = '#088b8b'; //changes timer font color
+    semiCircleElements[0].style.backgroundColor = '#088b8b';
+    semiCircleElements[1].style.backgroundColor = '#088b8b';
+    activeTimeRemaining = sessionActiveTime;
+    timerDisplayElm.innerText = format_timer(activeTimeRemaining); //Shows time in circle
+    update_circle();
+    timer();
 
-function timer(){
+    console.log('restarted time');
     
-    if(roundsCompleted % 2 == 0){
-        
-        activeInterval = setInterval(() =>{
-            activeTimeRemaining-- //decrements total time
-            timerDisplayElm.innerText = format_timer(activeTimeRemaining); //Shows time in circle
-            update_circle();// timer bar animation
-        },1000)
-    }
-
-    if(roundsCompleted % 2 !== 0){
-        timerDisplayElm.style.display = 'none' //hides active time in circle
-        breakTimerDisplayElm.style.color = '#8B088B';
-        update_break_circle();
-        
-        breakInterval = setInterval(() =>{ 
-            breakTimeRemaining-- //decrements total break time
-            breakTimerDisplayElm.innerText = format_timer(breakTimeRemaining); //Shows break time in circle
-            update_break_circle();
-        },1000)
-    }
+    
 }
 
 //
