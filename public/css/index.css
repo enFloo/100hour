@@ -93,6 +93,12 @@ nav{
 
 }
 
+.breadcrumb{
+
+  margin-right: 10em;
+  color: #000;
+}
+
 .circle-container{
   width: 325px;
   height: 325px;
