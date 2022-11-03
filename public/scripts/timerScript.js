@@ -25,6 +25,7 @@ function update_circle() {
 
     if (activeTimeRemaining <= 0) { // switch to break time
         clearInterval(activeInterval);
+        endRoundAlarm.play();
         incrementRoundsCompleted();
         semiCircleElements[0].style.backgroundColor = '#8B088B';
         semiCircleElements[1].style.backgroundColor = '#8B088B';
@@ -58,7 +59,11 @@ function update_break_circle(){
     }
 
     if(breakTimeRemaining <= 0) { // switch to active time
-        clearInterval(breakInterval)
+        clearInterval(breakInterval);
+        if(intervalsLeft > 1){
+            endRoundAlarm.play();
+        }
+       
         breakTimerDisplayElm.style.display = 'none' //hides active time in circle
         incrementRoundsCompleted();
         intervalsLeftElm.innerText = incrementIntervalsCompleted();
@@ -74,6 +79,7 @@ function update_break_circle(){
 
     if(intervalsLeft === 0){
         clearInterval(activeInterval)
+        workoutCompleteAlarm.play();
         timerDisplayElm.style.color = 'lightgray';
     
         timerDisplayElm.innerText = 'Workout Complete';
@@ -192,6 +198,8 @@ const timerDisplayElm = document.getElementById('timerDisplay');
 const breakTimerDisplayElm = document.getElementById('breakTimerDisplay');
 const semiCircleElements = document.querySelectorAll('.semiCircle');
 const intervalsLeftElm = document.getElementById('intervalsLeft');
+let endRoundAlarm = new Audio('/assets/audio/443345__tec-studio__alarm-sound-002.wav');
+let workoutCompleteAlarm = new Audio('/assets/audio/610561__brickdeveloper171__alien-signal-4.wav');
 
 window.addEventListener('load', app(), true);
 
@@ -199,6 +207,7 @@ function app() {
     activeTimeRemaining = sessionActiveTime;
     breakTimeRemaining = sessionBreakTime;
     totalIntervals = sessionNumberOfRounds;
+    
     
 
     breakTimerDisplayElm.style.display = 'none'
