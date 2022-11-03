@@ -37,7 +37,6 @@ function update_circle() {
 
 function update_break_circle(){
     let breakCurrentAngle = (breakTimeRemaining / sessionBreakTime) * 360;
-    let roundsLeft = (totalIntervals * 2) - roundsCompleted;
     
     // Break progress indicator
     if (breakCurrentAngle > 180) {
@@ -58,10 +57,11 @@ function update_break_circle(){
         breakTimerDisplayElm.style.color = 'red';
     }
 
-    if (breakTimeRemaining <= 0) { // switch to active time
+    if(breakTimeRemaining <= 0) { // switch to active time
         clearInterval(breakInterval)
         breakTimerDisplayElm.style.display = 'none' //hides active time in circle
         incrementRoundsCompleted();
+        incrementIntervalsCompleted();
         semiCircleElements[0].style.backgroundColor = '#088b8b';
         semiCircleElements[1].style.backgroundColor = '#088b8b';
         timerDisplayElm.style.display = 'block'; // shows break time in circle
@@ -71,13 +71,32 @@ function update_break_circle(){
         update_circle();
         timer();      
     }
+
+    if(intervalsLeft === 0){
+        clearInterval(activeInterval)
+        timerDisplayElm.style.color = 'lightgray';
+    
+        timerDisplayElm.innerText = 'Workout Complete';
+        semiCircleElements[0].style.backgroundColor = 'none';
+        semiCircleElements[1].style.backgroundColor = 'none';
+        
+        
+    }
+}
+
+function incrementIntervalsCompleted(){ // Two roundsCompeleted equals one Interval completed
+    intervalsCompleted = intervalsCompleted + 1;
+    intervalsLeft = totalIntervals - intervalsCompleted
+
+    return intervalsLeft;
 }
 
 function incrementRoundsCompleted(){
-    roundsLeft = totalIntervals - roundsCompleted;
     roundsCompleted = roundsCompleted + 1;
     
+    
 }
+
 
 function format_timer(totalSeconds) {
     var date = new Date(0);
@@ -139,11 +158,14 @@ function restart_timer() {
     clearInterval(activeInterval);
     clearInterval(breakInterval);
     roundsCompleted = 0;
+    intervalsCompleted = 0;
     if(timerDisplayElm.style.display = 'none'){
         timerDisplayElm.style.display = 'block';
     }
     breakTimerDisplayElm.style.display = 'none';
     timerDisplayElm.style.color = '#088b8b'; //changes timer font color
+    // semiCircleElements[0].style.backgroundColor = 'block';
+    // semiCircleElements[1].style.backgroundColor = 'block';
     semiCircleElements[0].style.backgroundColor = '#088b8b';
     semiCircleElements[1].style.backgroundColor = '#088b8b';
     activeTimeRemaining = sessionActiveTime;
@@ -163,12 +185,15 @@ let isPaused = true;
 let activeTimeRemaining = null;
 let breakTimeRemaining = null;
 let totalIntervals = null;
+let intervalsCompleted = 0;
 let activeInterval = null;
 let breakInterval = null;
 let roundsCompleted = 0;
+let intervalsLeft = sessionNumberOfRounds
 const timerDisplayElm = document.getElementById('timerDisplay');
 const breakTimerDisplayElm = document.getElementById('breakTimerDisplay');
 const semiCircleElements = document.querySelectorAll('.semiCircle');
+const intervalsLeftElm = document.getElementById('intervalsLeft');
 
 window.addEventListener('load', app(), true);
 
@@ -186,6 +211,8 @@ function app() {
     document.getElementById('startButton').onclick = resume_timer;
     document.getElementById('pauseButton').onclick = pause_timer;
     document.getElementById('restartButton').onclick = restart_timer;
+    // Show number of intervals left in template
+    intervalsLeftElm.innerText = `Rounds Left: ${intervalsLeft}`
 }
 
 
