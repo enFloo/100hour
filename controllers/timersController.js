@@ -43,17 +43,19 @@ module.exports = {
         try{
             const activeInput = req.body.activeTime.split(':');
             const breakInput = req.body.breakTime.split(':')
-            
 
+            req.body.activeTime = ((+activeInput[0] * 60) + (+activeInput[1]));
+            req.body.breakTime = ((+breakInput[0] * 60) + (+breakInput[1]));
+        
             
-            let updateId = req.params.id;
+            let _id = req.params.id;
             let updateTimerName = req.body.timerName;
-            let updateActiveTime = ((+activeInput[0] * 60) + (+activeInput[1]));
-            let updatebreakTime = ((+breakInput[0] * 60) + (+breakInput[1]));
+            let updateActiveTime = req.body.activeTime;
+            let updatebreakTime = req.body.breakTime;
             let updateNumberOfRounds = req.body.numberOfRounds;
             
             await Timer.findOneAndUpdate(
-            {updateId: req.params.id}, {$set:{timerName: updateTimerName, activeTime: updateActiveTime, breakTime: updatebreakTime, numberOfRounds: updateNumberOfRounds}}).lean().exec();
+            {_id: req.params.id}, {$set:{timerName: updateTimerName, activeTime: updateActiveTime, breakTime: updatebreakTime, numberOfRounds: updateNumberOfRounds}}).lean().exec();
 
                     
             console.log('Timer has been edited!')
