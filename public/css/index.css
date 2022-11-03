@@ -2,7 +2,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
 }
+
+
 
 #loginButton{
   background-color: #cf4332;
@@ -12,6 +15,23 @@
   border: 5px solid red;
 }
 
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.page-footer{
+  background-color: #000;
+}
+
+#dashboardTitle{
+  text-align: left;
+}
 
 
 h3 {
@@ -32,9 +52,7 @@ p{
   margin: 1em 0em;
 }
 
-body {
-  background-color: #E2DCC8;
-}
+
 
 nav{
   background-color: #100F0F;
@@ -50,23 +68,6 @@ nav{
   height: 11em;
 }
 
-.dashbody{ 
-  width: 100vw;
-  height: 100vh;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  background-color: #fff;
-    
-    
-}
-
-.dashheader{ 
-   
-    
-}
 
 .dashMiddle{
   height: 20em;
@@ -76,7 +77,7 @@ nav{
 
 .dashColumn{
   flex: 1 1 auto;
-  border: 5px solid #E2DCC8;
+  
 }
 
 .center{

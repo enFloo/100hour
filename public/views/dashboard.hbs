@@ -1,9 +1,10 @@
 
-<section class="container dashbody">
-    <section class=" container dashheader">
-
-        <h4 class="left-align">Dashboard</h4>
-        <h5>Welcome {{user.username}}</h5>
+<section class="card">
+    
+    <section class="card-content">
+        <h4 id="dashboardTitle">Dashboard</h4>
+        
+        <h6>Welcome {{user.username}}</h6>
         {{#if user.picture}}
             <img class="profilepic" src="{{user.picture}}"  alt="User profile image">
         {{else}}
@@ -22,12 +23,13 @@
 
         <section class="dashColumn ">
             <h6>Notes</h6>
+            <p>Coming Soon</p>
 
         </section>
 
         <section class="dashColumn ">
             <h6>Posts</h6>
-
+            <p>Coming Soon</p>
         </section>
 
 
