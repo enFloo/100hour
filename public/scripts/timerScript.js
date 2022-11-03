@@ -163,6 +163,10 @@ function restart_timer() {
     clearInterval(breakInterval);
     roundsCompleted = 0;
     intervalsCompleted = 0;
+    totalIntervals = sessionNumberOfRounds;
+    intervalsLeftElm.innerText = `Rounds Left: ${totalIntervals}`;
+    
+    
     if(timerDisplayElm.style.display = 'none'){
         timerDisplayElm.style.display = 'block';
     }
