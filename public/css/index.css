@@ -94,7 +94,11 @@ nav{
 }
 
 .breadcrumb{
+  margin-right: 10em;
+  color: #000;
+}
 
+#breadcrumb{
   margin-right: 10em;
   color: #000;
 }
