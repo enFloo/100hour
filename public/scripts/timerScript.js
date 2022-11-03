@@ -60,13 +60,12 @@ function update_break_circle(){
 
     if(breakTimeRemaining <= 0) { // switch to active time
         clearInterval(breakInterval);
-        if(intervalsLeft > 1){
-            endRoundAlarm.play();
-        }
-       
         breakTimerDisplayElm.style.display = 'none' //hides active time in circle
         incrementRoundsCompleted();
         intervalsLeftElm.innerText = incrementIntervalsCompleted();
+        if(intervalsLeft >= 1){
+            endRoundAlarm.play();
+        }
         semiCircleElements[0].style.backgroundColor = '#088b8b';
         semiCircleElements[1].style.backgroundColor = '#088b8b';
         timerDisplayElm.style.display = 'block'; // shows break time in circle
@@ -77,11 +76,10 @@ function update_break_circle(){
         timer();      
     }
 
-    if(intervalsLeft === 0){
+    if( breakTimeRemaining == 0 && intervalsLeft == 0){
         clearInterval(activeInterval)
         workoutCompleteAlarm.play();
         timerDisplayElm.style.color = 'lightgray';
-    
         timerDisplayElm.innerText = 'Workout Complete';
         semiCircleElements[0].style.backgroundColor = 'none';
         semiCircleElements[1].style.backgroundColor = 'none';
@@ -173,6 +171,7 @@ function restart_timer() {
     semiCircleElements[0].style.backgroundColor = '#088b8b';
     semiCircleElements[1].style.backgroundColor = '#088b8b';
     activeTimeRemaining = sessionActiveTime;
+    breakTimeRemaining = sessionBreakTime;
     timerDisplayElm.innerText = format_timer(activeTimeRemaining); //Shows time in circle
     update_circle();
     timer();
