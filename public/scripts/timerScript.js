@@ -150,7 +150,7 @@ function restart_timer() {
     timerDisplayElm.innerText = format_timer(activeTimeRemaining); //Shows time in circle
     update_circle();
     timer();
-
+    isPaused = false;
     console.log('restarted time');
     
     
