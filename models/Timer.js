@@ -16,6 +16,10 @@ const TimerSchema = new mongoose.Schema({
     numberOfRounds:{
         type: Number,
         required: true
+    },
+    user: {
+        type: String,
+        ref: "User"
     }
 })
 

@@ -1,15 +1,19 @@
 const mongoose = require('mongoose');
 const Timer = require('../models/Timer');
 
+
 module.exports = {
 
     getTimers: async (req, res) => {
         try {
-            let mySort = {_id: -1}
-            const collection = await Timer.find({}).sort(mySort).lean().exec();
 
-            //console.log(collection)
+            let sortByMostRecent = {_id: -1}
+            const collection = await Timer.find({user: req.user.id}).sort(sortByMostRecent).lean().exec();
+            
+            console.log(collection)
+            // console.log(req.user.id)
             res.render('timers', {timers: collection})
+            
             
         } catch (err) {
             console.log(err)
@@ -23,6 +27,7 @@ module.exports = {
         
             //console.log(timerById)
             res.render('showTimer', {timer: timerById});
+            
 
         }catch(err){
             console.log(err);
@@ -83,23 +88,20 @@ module.exports = {
     },
 
     createTimer: async (req, res) => {
-        
-        
-
-
         try{
             const activeInput = req.body.activeTime.split(':');
             const breakInput = req.body.breakTime.split(':')
             req.body.activeTime = ((+activeInput[0] * 60) + (+activeInput[1]));
             req.body.breakTime = ((+breakInput[0] * 60) + (+breakInput[1]));
-
+            
             
             await Timer.create({
                 id: req.params.id,
                 timerName: req.body.timerName,
                 activeTime: req.body.activeTime,
                 breakTime: req.body.breakTime,
-                numberOfRounds: req.body.numberOfRounds
+                numberOfRounds: req.body.numberOfRounds,
+                user: req.user.id,
             });
 
             console.log("Timer has been created!");

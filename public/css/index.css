@@ -96,11 +96,13 @@ nav{
 .breadcrumb{
   margin-right: 10em;
   color: #000;
+  text-decoration: underline;
 }
 
 #breadcrumb{
   margin-right: 10em;
   color: #000;
+  text-decoration: underline;
 }
 
 .circle-container{
