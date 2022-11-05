@@ -9,8 +9,7 @@ module.exports = {
 
             let sortByMostRecent = {_id: -1}
             const collection = await Timer.find({user: req.user.id}).sort(sortByMostRecent).lean().exec();
-            
-            console.log(collection)
+        
             // console.log(req.user.id)
             res.render('timers', {timers: collection})
             

@@ -25,7 +25,7 @@ function update_circle() {
 
     if (activeTimeRemaining <= 0) { // switch to break time
         clearInterval(activeInterval);
-        endRoundAlarm.play();
+        endOfIntervalSound();
         incrementRoundsCompleted();
         semiCircleElements[0].style.backgroundColor = '#8B088B';
         semiCircleElements[1].style.backgroundColor = '#8B088B';
@@ -64,7 +64,7 @@ function update_break_circle(){
         incrementRoundsCompleted();
         intervalsLeftElm.innerText = incrementIntervalsCompleted();
         if(intervalsLeft >= 1){
-            endRoundAlarm.play();
+            endOfIntervalSound();
         }
         semiCircleElements[0].style.backgroundColor = '#26A69A';
         semiCircleElements[1].style.backgroundColor = '#26A69A';
@@ -77,8 +77,8 @@ function update_break_circle(){
     }
 
     if( breakTimeRemaining == 0 && intervalsLeft == 0){
-        clearInterval(activeInterval)
-        workoutCompleteAlarm.play();
+        clearInterval(activeInterval);
+        endOfWorkoutSound();
         timerDisplayElm.style.color = 'lightgray';
         timerDisplayElm.innerText = 'Workout Complete';
         semiCircleElements[0].style.backgroundColor = 'none';
@@ -184,6 +184,15 @@ function restart_timer() {
     
     
 }
+function endOfIntervalSound(){
+    endRoundAlarm.load()
+    endRoundAlarm.play()
+}
+
+function endOfWorkoutSound(){
+    workoutCompleteAlarm.load()
+    workoutCompleteAlarm.play()
+}
 
 //
 // Global state
@@ -201,7 +210,7 @@ const timerDisplayElm = document.getElementById('timerDisplay');
 const breakTimerDisplayElm = document.getElementById('breakTimerDisplay');
 const semiCircleElements = document.querySelectorAll('.semiCircle');
 const intervalsLeftElm = document.getElementById('intervalsLeft');
-let endRoundAlarm = new Audio('/assets/audio/443345__tec-studio__alarm-sound-002.wav');
+let endRoundAlarm = new Audio('/assets/audio/264346__soundslikewillem__beep.wav');
 let workoutCompleteAlarm = new Audio('/assets/audio/610561__brickdeveloper171__alien-signal-4.wav');
 
 window.addEventListener('load', app(), true);
