@@ -49,6 +49,7 @@ p{
   text-align: center;
 }
 
+
 .divider{
   margin: 1em 0em;
 }
@@ -248,6 +249,12 @@ nav{
     margin-left: auto;   
     max-width: 100%;    
     min-width:165px;
+  }
+
+  .login-container{
+    width:325px;
+    margin-top:50px;
+    text-align: center;
   }
 
   .card{
