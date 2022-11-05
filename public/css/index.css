@@ -66,8 +66,6 @@ nav{
 }
 
 .profilepic{
-  /* width:;
-  height: ; */
 
   display: inline-block;
   width: 12em;
@@ -251,6 +249,11 @@ nav{
     min-width:165px;
   }
 
+  .profilepic{
+    width: 9em;
+    height: 9em;
+  }
+
   .login-container{
     width:325px;
     margin-top:50px;
@@ -267,16 +270,33 @@ nav{
   }
 
   .main-container{
-    height: 25em;
+    height: 18em;
   } 
 
   .circle-container{
     margin: 0;
+    width: 220px;
+    height: 220px;
+  }
+
+  .outermost-circle{
+    width: 210px;
+    height: 210px;
   }
 
   .timer-container{
     position: relative;
     bottom: 1em;
+  }
+
+  #timerDisplay{
+    font-size: 50px;
+    height: 75px;
+  }
+
+  #breakTimerDisplay{
+    font-size: 50px;
+    height: 75px;
   }
 
   
