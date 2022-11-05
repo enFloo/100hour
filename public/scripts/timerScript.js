@@ -9,7 +9,7 @@ function update_circle() {
         semiCircleElements[0].style.transform = 'rotate(180deg)';
         semiCircleElements[1].style.transform = `rotate(${currentAngle}deg)`;
         semiCircleElements[2].style.display = 'none';
-        timerDisplayElm.style.color = '#088b8b';
+        timerDisplayElm.style.color = '#26A69A';
     } else {
         semiCircleElements[0].style.transform = `rotate(${currentAngle}deg)`;
         semiCircleElements[1].style.transform = `rotate(${currentAngle}deg)`;
@@ -66,10 +66,10 @@ function update_break_circle(){
         if(intervalsLeft >= 1){
             endRoundAlarm.play();
         }
-        semiCircleElements[0].style.backgroundColor = '#088b8b';
-        semiCircleElements[1].style.backgroundColor = '#088b8b';
+        semiCircleElements[0].style.backgroundColor = '#26A69A';
+        semiCircleElements[1].style.backgroundColor = '#26A69A';
         timerDisplayElm.style.display = 'block'; // shows break time in circle
-        timerDisplayElm.style.color = '#088b8b';
+        timerDisplayElm.style.color = '#26A69A';
         activeTimeRemaining = sessionActiveTime;
         timerDisplayElm.innerText = format_timer(activeTimeRemaining); //Shows break time in circle 
         update_circle();
@@ -171,9 +171,9 @@ function restart_timer() {
         timerDisplayElm.style.display = 'block';
     }
     breakTimerDisplayElm.style.display = 'none';
-    timerDisplayElm.style.color = '#088b8b'; //changes timer font color
-    semiCircleElements[0].style.backgroundColor = '#088b8b';
-    semiCircleElements[1].style.backgroundColor = '#088b8b';
+    timerDisplayElm.style.color = '#26A69A'; //changes timer font color
+    semiCircleElements[0].style.backgroundColor = '#26A69A';
+    semiCircleElements[1].style.backgroundColor = '#26A69A';
     activeTimeRemaining = sessionActiveTime;
     breakTimeRemaining = sessionBreakTime;
     timerDisplayElm.innerText = format_timer(activeTimeRemaining); //Shows time in circle
@@ -214,7 +214,7 @@ function app() {
     
 
     breakTimerDisplayElm.style.display = 'none'
-    timerDisplayElm.style.color = '#088b8b'; //changes timer font color
+    timerDisplayElm.style.color = '#26A69A'; //changes timer font color
     timerDisplayElm.innerText = format_timer(activeTimeRemaining); //Shows time in circle
     update_circle();// timer bar animation
 

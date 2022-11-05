@@ -16,6 +16,7 @@
 }
 
 body {
+  width: 100%;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -35,7 +36,7 @@ main {
 
 
 h3 {
-  font-size: 4em;
+  font-size: 3em;
 }
 
 p{
@@ -64,8 +65,17 @@ nav{
 }
 
 .profilepic{
-  width:12em;
-  height: 11em;
+  /* width:;
+  height: ; */
+
+  display: inline-block;
+  width: 12em;
+  height: 12em;
+  border-radius: 50%;
+  border: 5px solid #26A69A;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
 
 
@@ -106,6 +116,8 @@ nav{
 }
 
 .circle-container{
+  margin-top: 2em;
+
   width: 325px;
   height: 325px;
   background-color: #ddd;
@@ -127,12 +139,12 @@ nav{
 }
 
 .semiCircle:nth-child(1){
-  background-color: #088b8b;
+  background-color: #26A69A;
   z-index: 2;
 }
 
 .semiCircle:nth-child(2){
-  background-color: #088b8b;
+  background-color: #26A69A;
   z-index: 3;
 }
 
@@ -158,12 +170,13 @@ nav{
 }
 
 #timerDisplay {
+  
   width: 400px;
   height: 100px;
   z-index: 7;
   font-size: 70px;
   font-weight: bold;
-  margin: 0 10px 0 10px;
+  margin: 35px 10px 0 10px;
 }
 
 #breakTimerDisplay {
@@ -172,7 +185,7 @@ nav{
   z-index: 7;
   font-size: 70px;
   font-weight: bold;
-  margin: 0 10px 0 10px;
+  margin: 35px 10px 0 10px;
 }
 
 /* Control buttons */
@@ -184,7 +197,8 @@ nav{
 }
 
 .controlButtons{
-  margin-right: 1em;    
+  margin-right: 1em; 
+     
   border: none;
   background: none;
   
@@ -204,7 +218,7 @@ nav{
 
 
 .btn:hover{
-  background: #0F3D3E;
+  background: #26A69A;
   transition: 0.3s ease;
 }
 
@@ -220,3 +234,43 @@ nav{
 .column {
   display: table-cell;
 }
+
+.page-footer{
+  margin-top: 2em;
+}
+
+/* @media screen and (max-width: 420px){
+  body{
+    margin: 0;
+  }
+  nav{
+    margin-right: auto;    
+    margin-left: auto;   
+    max-width: 100%;    
+    min-width:165px;
+  }
+
+  .card{
+    margin: 0 2em;
+  }
+
+  .showTimerCard h3{
+    font-size: 2em;
+    margin: 0;
+  }
+
+  .main-container{
+    height: 25em;
+  } 
+
+  .circle-container{
+    margin: 0;
+  }
+
+  .timer-container{
+    position: relative;
+    bottom: 1em;
+  }
+
+  
+} */
