@@ -185,13 +185,24 @@ function restart_timer() {
     
 }
 function endOfIntervalSound(){
-    endRoundAlarm.load()
-    endRoundAlarm.play()
+
+    const endRoundAlarm = new Audio();
+    endRoundAlarm.autoplay = true;
+
+    endRoundAlarm.src = "data:audio/mpeg;base64,SUQzBAAAAAABEVRYWFgAAAAtAAADY29tbWVudABCaWdTb3VuZEJhbmsuY29tIC8gTGFTb25vdGhlcXVlLm9yZwBURU5DAAAAHQAAA1N3aXRjaCBQbHVzIMKpIE5DSCBTb2Z0d2FyZQBUSVQyAAAABgAAAzIyMzUAVFNTRQAAAA8AAANMYXZmNTcuODMuMTAwAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV";
+
+    endRoundAlarm.src = '/assets/audio/264346__soundslikewillem__beep.wav';
 }
 
 function endOfWorkoutSound(){
-    workoutCompleteAlarm.load()
-    workoutCompleteAlarm.play()
+
+    const workoutCompleteAlarm = new Audio();
+    workoutCompleteAlarm.autoplay = true;
+
+    workoutCompleteAlarm.src = "data:audio/mpeg;base64,SUQzBAAAAAABEVRYWFgAAAAtAAADY29tbWVudABCaWdTb3VuZEJhbmsuY29tIC8gTGFTb25vdGhlcXVlLm9yZwBURU5DAAAAHQAAA1N3aXRjaCBQbHVzIMKpIE5DSCBTb2Z0d2FyZQBUSVQyAAAABgAAAzIyMzUAVFNTRQAAAA8AAANMYXZmNTcuODMuMTAwAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV";
+
+    workoutCompleteAlarm.src = '/assets/audio/610561__brickdeveloper171__alien-signal-4.wav'
+   
 }
 
 //
@@ -210,8 +221,8 @@ const timerDisplayElm = document.getElementById('timerDisplay');
 const breakTimerDisplayElm = document.getElementById('breakTimerDisplay');
 const semiCircleElements = document.querySelectorAll('.semiCircle');
 const intervalsLeftElm = document.getElementById('intervalsLeft');
-let endRoundAlarm = new Audio('/assets/audio/264346__soundslikewillem__beep.wav');
-let workoutCompleteAlarm = new Audio('/assets/audio/610561__brickdeveloper171__alien-signal-4.wav');
+
+
 
 window.addEventListener('load', app(), true);
 
