@@ -78,7 +78,7 @@ app.use(passport.session());
 app.use('/', require('./routes/index'));
 app.use('/', require('./routes/timers'))
  
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 
 
@@ -93,7 +93,7 @@ app.get('/auth/google',
 
 
 //setting /auth/auth/google/callback route
-app.get('/auth/auth/google/callback', 
+app.get('/auth/google/callback', 
   passport.authenticate('google', { failureRedirect: '/' }),
   function(req, res) {
     res.redirect('/dashboard');
