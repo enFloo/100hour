@@ -12,7 +12,7 @@ export function Navbar() {
     <div>
       <nav className="flex items-center justify-between bg-white h-14 px-5 navbar">
         <div>
-          <h1 className="text-xl">CircuitFlo</h1>
+          <h1 className="font-bold text-xl">CircuitFlo</h1>
         </div>
         <div className="hidden sm:flex mr-8">
           <ul  className="flex space-x-4">
