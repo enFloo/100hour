@@ -12,7 +12,7 @@ export function Navbar() {
     <div>
       <nav className="flex items-center justify-between bg-white h-14 px-5 navbar">
         <div>
-          <h1 className="ml-5 text-xl">CircuitFlo</h1>
+          <h1 className="text-xl">CircuitFlo</h1>
         </div>
         <div className="hidden sm:flex mr-8">
           <ul  className="flex space-x-4">
@@ -21,7 +21,7 @@ export function Navbar() {
             <li><Link href="/Login/Logout">Login</Link></li>
           </ul>
         </div>
-        <div id='toggleMenu' className="md:hidden ml-3" onClick={() => setIsOpen(!isOpen)}>
+        <div id='toggleMenu' className="md:hidden mr-7" onClick={() => setIsOpen(!isOpen)}>
           {/* three-barred hamburger menu */}
           <div className="mb-1 w-9 h-1 bg-black rounded-full"></div>
           <div className="mb-1 w-9 h-1 bg-black rounded-full"></div>
