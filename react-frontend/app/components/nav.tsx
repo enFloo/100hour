@@ -10,11 +10,18 @@ export function Navbar() {
 
   return (
     <div>
-      <nav className="content-center bg-white h-14 grid gap-x-60 grid-cols-2 navbar border-2 border-rose-500">
+      <nav className="content-center bg-white h-14 grid gap-x-45 grid-cols-2 navbar">
         <div>
           <h1 className="ml-5 text-xl">CircuitFlo</h1>
         </div>
-        <div id='toggleMenu' className="ml-3" onClick={() => setIsOpen(!isOpen)}>
+        <div className="hidden sm:block justify-end pr-0">
+          <ul  className="grid grid-flow-col auto-cols-max gap-4 border-2 border-rose-500">
+            <li><Link href="/">Dashboard</Link></li>
+            <li><Link href="/Timers">Timers</Link></li>
+            <li><Link href="/Login/Logout">Login/Logout</Link></li>
+          </ul>
+        </div>
+        <div id='toggleMenu' className="md:hidden ml-3" onClick={() => setIsOpen(!isOpen)}>
           {/* three-barred hamburger menu */}
           <div className="mb-1 w-9 h-1 bg-black rounded-full"></div>
           <div className="mb-1 w-9 h-1 bg-black rounded-full"></div>
@@ -60,8 +67,3 @@ export function Navbar() {
 }
 
 
-{/* <ul>
-  <li><Link href="/">Dashboard</Link></li>
-  <li><Link href="/Timers">Timers</Link></li>
-  <li><Link href="/Login/Logout">Login/Logout</Link></li>
-</ul> */}
