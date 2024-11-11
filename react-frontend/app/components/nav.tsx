@@ -10,15 +10,15 @@ export function Navbar() {
 
   return (
     <div>
-      <nav className="content-center bg-white h-14 grid gap-x-45 grid-cols-2 navbar">
+      <nav className="flex items-center justify-between bg-white h-14 px-5 navbar">
         <div>
           <h1 className="ml-5 text-xl">CircuitFlo</h1>
         </div>
-        <div className="hidden sm:block justify-end pr-0">
-          <ul  className="grid grid-flow-col auto-cols-max gap-4 border-2 border-rose-500">
+        <div className="hidden sm:flex mr-8">
+          <ul  className="flex space-x-4">
             <li><Link href="/">Dashboard</Link></li>
             <li><Link href="/Timers">Timers</Link></li>
-            <li><Link href="/Login/Logout">Login/Logout</Link></li>
+            <li><Link href="/Login/Logout">Login</Link></li>
           </ul>
         </div>
         <div id='toggleMenu' className="md:hidden ml-3" onClick={() => setIsOpen(!isOpen)}>
